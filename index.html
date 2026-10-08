@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dolce Meza — Panadería · Pasteles artesanales</title>
+<meta name="description" content="Panadería de lotes pequeños: pastel de frambuesa y pistache, tarta de limón con menta y pastel de berries con chantilly. Hechos a mano a diario.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Poppins:wght@300;400;500;600&family=Parisienne&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FEF9F3;
+    --card:#F6F1EB;
+    --wine:#9B1F4B;
+    --wine-dark:#7E1739;
+    --mint:#94C8B2;
+    --mint-soft:#BFE1D5;
+    --ink:#4A2C2A;
+    --body:#3B2A26;
+    --muted:#8C7A72;
+    --line:rgba(74,44,42,.12);
+    --r:14px;
+    --serif:'Fraunces',Georgia,serif;
+    --sans:'Poppins',system-ui,sans-serif;
+    --script:'Parisienne',cursive;
+    --shadow:0 18px 44px -22px rgba(74,44,42,.38);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    background:var(--cream);
+    color:var(--body);
+    font-size:16px;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img,svg{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--serif);color:var(--wine);font-weight:600;letter-spacing:-.02em;line-height:1.1}
+
+  .container{width:min(1180px,100% - 48px);margin-inline:auto}
+
+  /* ---------------- Buttons ---------------- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:.5em;
+    font-family:var(--sans);font-size:.85rem;font-weight:500;letter-spacing:.04em;
+    padding:.85em 1.55em;border-radius:12px;border:1.5px solid transparent;
+    cursor:pointer;transition:.28s cubic-bezier(.4,0,.2,1);white-space:nowrap;
+  }
+  .btn-primary{background:var(--wine);color:#FFF7EF;box-shadow:0 10px 24px -14px rgba(155,31,75,.9)}
+  .btn-primary:hover{background:var(--wine-dark);transform:translateY(-2px);box-shadow:0 16px 30px -14px rgba(155,31,75,.75)}
+  .btn-outline{background:transparent;color:var(--wine);border-color:var(--mint)}
+  .btn-outline:hover{background:rgba(148,200,178,.22);border-color:#7FB79C;transform:translateY(-2px)}
+  .btn-mint{background:var(--mint-soft);color:var(--wine);font-weight:600;padding:1.05em 2.3em;font-size:.92rem}
+  .btn-mint:hover{background:#D5EFE5;transform:translateY(-3px);box-shadow:0 18px 34px -16px rgba(0,0,0,.5)}
+  .btn-sm{padding:.6em 1.1em;font-size:.74rem;border-radius:10px}
+
+  /* ---------------- Header ---------------- */
+  .site-header{
+    position:sticky;top:0;z-index:60;
+    background:rgba(254,249,243,.86);
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(155,31,75,.09);
+  }
+  .header-inner{display:flex;align-items:center;gap:32px;height:180px}
+
+  .brand{display:flex;align-items:center;gap:13px;flex-shrink:0}
+  .brand .seal{height:168px;width:auto;max-width:390px;object-fit:contain;flex-shrink:0;border-radius:28px}
+  .brand-name{display:block;font-family:var(--script);font-size:1.65rem;color:var(--wine);line-height:1}
+  .brand-tag{
+    display:block;font-size:.55rem;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--muted);font-weight:500;margin-top:6px;
+  }
+
+  .nav{display:flex;gap:34px;margin-inline:auto}
+  .nav a{
+    font-size:.86rem;font-weight:400;color:var(--body);letter-spacing:.02em;
+    position:relative;padding:6px 0;transition:color .25s;
+  }
+  .nav a::after{
+    content:"";position:absolute;left:0;right:0;bottom:0;height:2px;
+    background:var(--mint);border-radius:2px;transform:scaleX(0);
+    transform-origin:center;transition:transform .3s cubic-bezier(.4,0,.2,1);
+  }
+  .nav a:hover{color:var(--wine)}
+  .nav a:hover::after,.nav a.active::after{transform:scaleX(1)}
+  .nav a.active{color:var(--wine);font-weight:500}
+
+  .header-ctas{display:flex;gap:12px;flex-shrink:0}
+  .menu-toggle{display:none;background:none;border:0;padding:8px;cursor:pointer}
+  .menu-toggle span{display:block;width:24px;height:2px;background:var(--wine);border-radius:2px;margin:5px 0;transition:.3s}
+  .menu-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .menu-toggle.open span:nth-child(2){opacity:0}
+  .menu-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+  /* ---------------- Hero ---------------- */
+  .hero{padding:84px 0 76px}
+  .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+
+  .pill{
+    display:inline-flex;align-items:center;gap:.55em;
+    background:var(--mint-soft);color:#3E6B5A;
+    font-size:.68rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+    padding:.62em 1.25em;border-radius:999px;
+  }
+  .pill::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--wine)}
+
+  .hero h1{
+    font-size:clamp(2.5rem,4.6vw,4rem);
+    margin:26px 0 22px;line-height:1.04;
+  }
+  .hero h1 em{font-style:italic;color:#B8245A}
+  .hero p.lead{font-size:1.03rem;color:var(--body);max-width:34em;font-weight:300}
+  .hero-ctas{display:flex;gap:14px;margin-top:36px;flex-wrap:wrap}
+
+  .hero-figure{
+    position:relative;background:var(--mint);padding:11px;
+    clip-path:polygon(48px 0,100% 0,100% calc(100% - 48px),calc(100% - 48px) 100%,0 100%,0 48px);
+    box-shadow:var(--shadow);
+  }
+  .hero-figure__inner{
+    background:#EFE6DA;overflow:hidden;
+    clip-path:polygon(38px 0,100% 0,100% calc(100% - 38px),calc(100% - 38px) 100%,0 100%,0 38px);
+  }
+  .hero-figure img,.hero-figure svg{width:100%;height:auto;object-fit:cover}
+  .hero-figure figcaption{
+    position:absolute;left:34px;bottom:34px;
+    background:rgba(254,249,243,.94);backdrop-filter:blur(6px);
+    border-radius:12px;padding:12px 18px;border:1px solid rgba(148,200,178,.7);
+  }
+  .hero-figure figcaption b{
+    display:block;font-family:var(--serif);color:var(--wine);font-size:.95rem;font-weight:600;
+  }
+  .hero-figure figcaption span{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+  /* ---------------- Trust bar ---------------- */
+  .trust{padding:14px 0 66px}
+  .trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:860px;margin-inline:auto}
+  .trust-item{display:flex;align-items:center;gap:16px;justify-content:center}
+  .trust-icon{
+    width:58px;height:58px;border-radius:50%;background:var(--mint-soft);
+    display:grid;place-items:center;flex-shrink:0;transition:.35s;
+  }
+  .trust-item:hover .trust-icon{background:var(--mint);transform:translateY(-4px)}
+  .trust-icon svg{width:26px;height:26px;stroke:#4E7A69;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+  .trust-item h4{font-family:var(--sans);font-size:.9rem;font-weight:600;color:var(--ink);letter-spacing:.01em}
+  .trust-item p{font-size:.78rem;color:var(--muted);font-weight:300;line-height:1.5}
+
+  .band-mint{background:var(--mint-soft);padding:26px 0;text-align:center}
+  .band-mint p{
+    font-family:var(--serif);font-style:italic;color:#3F6A5A;font-size:clamp(.95rem,1.5vw,1.15rem);
+    display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;
+  }
+  .band-mint svg{width:20px;height:20px;fill:#6FA790;flex-shrink:0}
+
+  /* ---------------- Menu ---------------- */
+  .products{padding:96px 0 104px}
+  .section-head{text-align:center;max-width:620px;margin:0 auto 56px}
+  .section-head .eyebrow{
+    font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:#6FA790;font-weight:600;
+  }
+  .section-head h2{font-size:clamp(2rem,3.4vw,2.9rem);margin:16px 0 14px}
+  .section-head p{color:var(--muted);font-weight:300;font-size:.95rem}
+
+  .menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:1020px;margin-inline:auto}
+  .menu-card{
+    background:var(--card);border-radius:16px;padding:30px;
+    border:1px solid rgba(148,200,178,.35);
+    transition:.4s cubic-bezier(.4,0,.2,1);
+  }
+  .menu-card:hover{transform:translateY(-6px);box-shadow:0 24px 46px -28px rgba(74,44,42,.45);border-color:var(--mint)}
+  .menu-card.wide{grid-column:1 / -1}
+  .menu-card h3{font-family:var(--serif);font-size:1.5rem;color:var(--wine);letter-spacing:-.01em}
+  .menu-card .sub{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+  .flavors{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 22px}
+  .flavor{
+    background:#FFFDF8;border:1px solid var(--mint);border-radius:999px;
+    padding:5px 13px;font-size:.73rem;color:#40685A;font-weight:400;
+  }
+  .prices{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;border-top:1px dashed rgba(74,44,42,.18);padding-top:20px}
+  .price-cell{background:#FFFDF8;border:1px solid rgba(148,200,178,.5);border-radius:12px;padding:12px 6px;text-align:center;transition:.3s}
+  .menu-card:hover .price-cell{border-color:var(--mint)}
+  .price-cell b{display:block;font-family:var(--serif);font-size:1.1rem;color:var(--wine);font-weight:600}
+  .price-cell span{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .price-cell small{display:block;font-size:.62rem;color:var(--muted);letter-spacing:.03em;margin-top:4px;font-weight:400}
+  .gourmet td small{display:block;font-size:.72rem;color:var(--muted);font-weight:400;font-family:var(--sans);margin-top:2px}
+  .postres{margin-top:18px;display:flex;flex-direction:column;gap:10px}
+  .postre-row{
+    display:flex;align-items:baseline;justify-content:space-between;gap:14px;
+    background:#FFFDF8;border:1px solid rgba(148,200,178,.5);border-radius:12px;padding:11px 16px;
+  }
+  .postre-row b{font-family:var(--serif);color:var(--wine);font-weight:600;font-size:.98rem}
+  .postre-row .dots{flex:1;border-bottom:1px dotted rgba(148,200,178,.8);transform:translateY(-4px)}
+  .postre-row .px{font-family:var(--serif);color:var(--wine);font-weight:600;font-size:1rem}
+  .gourmet{border-collapse:separate;border-spacing:8px;width:100%;margin-top:18px}
+  .gourmet th{
+    font-family:var(--serif);color:var(--wine);font-weight:600;font-size:.95rem;
+    font-weight:600;background:#FFFDF8;border:1px solid var(--mint);border-radius:12px;padding:12px 10px;
+  }
+  .gourmet td{
+    text-align:center;background:#FFFDF8;border:1px solid rgba(148,200,178,.5);
+    border-radius:12px;padding:11px 10px;font-size:.92rem;color:var(--body);
+  }
+  .gourmet td:first-child{font-family:var(--serif);color:var(--wine);font-weight:600}
+  .gourmet td b{font-family:var(--serif);color:var(--wine);font-weight:600}
+  .menu-note{text-align:center;margin-top:36px;font-size:.8rem;color:var(--muted);font-style:italic}
+
+  /* ---------------- Tira de sabores ---------------- */
+  .carousel{padding:0 0 40px}
+  .cat-block{margin:30px 0 10px}
+  .cat-head{
+    display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;
+    margin-bottom:14px;
+  }
+  .cat-head .title{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .cat-head h3{font-size:1.5rem;display:flex;align-items:center;gap:9px}
+  .cat-head .heart{color:var(--wine)}
+  .cat-head .prices-tag{
+    font-family:var(--sans);font-size:.7rem;letter-spacing:.07em;text-transform:uppercase;
+    color:var(--muted);background:var(--mint-soft);border-radius:999px;padding:.4em 1em;font-weight:600;
+  }
+  .cat-arrows{display:flex;gap:10px}
+  .arrow{
+    width:44px;height:44px;border-radius:50%;border:1.5px solid var(--mint);background:#FFFDF8;
+    color:var(--wine);font-size:1.15rem;line-height:1;cursor:pointer;display:grid;place-items:center;
+    transition:.3s;
+  }
+  .arrow:hover{background:var(--mint-soft);transform:translateY(-2px)}
+  .strip-wrap{
+    overflow-x:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;
+    padding:6px 26px 24px;scroll-snap-type:x proximity;scrollbar-width:thin;
+    scrollbar-color:var(--mint) rgba(148,200,178,.18);
+  }
+  .strip-wrap::-webkit-scrollbar{height:9px}
+  .strip-wrap::-webkit-scrollbar-track{background:rgba(148,200,178,.18);border-radius:99px}
+  .strip-wrap::-webkit-scrollbar-thumb{background:var(--mint);border-radius:99px}
+  .strip{display:flex;gap:22px;scroll-snap-type:x proximity}
+  .cat-block.is-fit .strip{justify-content:center}
+  .slide{
+    flex:0 0 min(300px,74vw);scroll-snap-align:start;border-radius:18px;overflow:hidden;
+    border:1px solid rgba(148,200,178,.6);background:#FFFDF8;transition:.35s cubic-bezier(.4,0,.2,1);
+  }
+  .slide:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:#7FB79C}
+  .slide img{width:100%;height:auto;display:block}
+  .slide .tile{
+    aspect-ratio:1/1;display:grid;place-items:center;
+    background:linear-gradient(160deg,#F3EADD,#EAD8BE);
+    font-size:6.4rem;line-height:1;user-select:none;
+  }
+  .slide figcaption{
+    padding:14px 16px 16px;background:var(--card);display:flex;flex-direction:column;gap:4px;
+  }
+  .slide figcaption b{font-family:var(--serif);font-size:1.05rem;color:var(--wine);font-weight:600}
+  .slide figcaption small{font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+
+  /* ---------------- Pedidos especiales ---------------- */
+  .specials{padding:40px 0 20px}
+  .special-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .special-card{
+    background:var(--card);border:1px solid rgba(148,200,178,.35);border-radius:16px;
+    padding:28px 24px;display:flex;flex-direction:column;
+    transition:.4s cubic-bezier(.4,0,.2,1);
+  }
+  .special-card:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:var(--mint)}
+  .special-icon{
+    width:54px;height:54px;border-radius:14px;background:var(--mint-soft);
+    display:grid;place-items:center;font-size:1.65rem;margin-bottom:14px;
+  }
+  .special-card h3{font-size:1.15rem;margin-bottom:8px}
+  .special-card p{font-size:.8rem;color:var(--muted);line-height:1.7;font-weight:300;flex:1}
+  .quote{
+    align-self:flex-start;display:inline-flex;align-items:center;gap:7px;margin-top:18px;
+    font-size:.78rem;font-weight:600;color:#fff;background:#25D366;border-radius:999px;
+    padding:9px 16px;transition:.3s;
+  }
+  .quote:hover{background:#1EBE5B;transform:translateY(-2px)}
+  @media (max-width:900px){.special-grid{grid-template-columns:1fr 1fr}}
+  @media (max-width:680px){.special-grid{grid-template-columns:1fr}}
+
+  /* ---------------- Pedido ---------------- */
+  .pedido{padding:20px 0 110px}
+  .pedido-wrap{display:grid;grid-template-columns:1fr 1.3fr;gap:44px;align-items:start}
+  .pedido-intro h3{font-size:1.45rem;margin-bottom:10px}
+  .pedido-intro .lead{color:var(--muted);font-weight:300;line-height:1.7;max-width:34em}
+  .pedido-steps{list-style:none;margin-top:26px;display:flex;flex-direction:column;gap:14px}
+  .pedido-steps li{display:flex;align-items:center;gap:13px;font-size:.86rem;color:var(--body)}
+  .pedido-steps li b{
+    display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--mint-soft);
+    color:var(--wine);font-family:var(--serif);font-weight:600;font-size:.85rem;flex-shrink:0;
+  }
+  .form-card{background:var(--card);border:1px solid rgba(148,200,178,.4);border-radius:18px;padding:30px;box-shadow:var(--shadow)}
+  .field{margin-bottom:22px}
+  .field > label{display:block;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:#7A6A62;font-weight:600;margin-bottom:9px}
+  .field select,.field input[type=text],.field input[type=tel],.field input[type=date],.field input[type=time],.field textarea{
+    width:100%;background:#FFFDF8;border:1.5px solid rgba(148,200,178,.55);border-radius:12px;
+    padding:13px 15px;font-family:var(--sans);font-size:.9rem;color:var(--body);transition:.25s;
+    -webkit-appearance:none;appearance:none;
+  }
+  .field select:focus,.field input:focus,.field textarea:focus{outline:none;border-color:var(--wine);box-shadow:0 0 0 3px rgba(155,31,75,.08)}
+  .field textarea{resize:vertical;min-height:96px;line-height:1.6}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .opts{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  .opt{position:relative;cursor:pointer}
+  .opt input{position:absolute;opacity:0;pointer-events:none}
+  .opt span{
+    display:block;padding:12px 14px;background:#FFFDF8;border:1.5px solid rgba(148,200,178,.55);
+    border-radius:12px;cursor:pointer;transition:.25s;font-size:.86rem;color:var(--body);
+  }
+  .opt span small{display:block;font-size:.66rem;color:var(--muted);margin-top:3px;font-weight:400}
+  .opt input:checked + span{background:var(--mint-soft);border-color:var(--mint);color:#3E5B4B;font-weight:600}
+  .opt input:checked + span small{color:#40685A}
+  .price-est{
+    display:flex;align-items:center;justify-content:space-between;background:var(--mint-soft);
+    border-radius:12px;padding:14px 18px;
+  }
+  .price-est span{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#40685A;font-weight:600}
+  .price-est b{font-family:var(--serif);font-size:1.45rem;color:var(--wine)}
+  .price-num{text-align:right;display:flex;flex-direction:column;gap:2px}
+  .price-num small{font-size:.68rem;color:#40685A;text-decoration:line-through;font-weight:400;font-family:var(--sans)}
+  .review-opt span{display:block;width:100%}
+  .review-link{display:inline-block;margin-top:10px;font-size:.78rem;font-weight:600;color:var(--wine);text-decoration:underline;text-underline-offset:3px}
+  .review-link:hover{color:#7E1739}
+  .btn-wa{
+    width:100%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;gap:10px;
+    border:none;padding:16px;border-radius:14px;font-family:var(--sans);font-weight:600;font-size:1rem;cursor:pointer;transition:.3s;
+    box-shadow:0 14px 30px -14px #1B9E59;
+  }
+  .btn-wa:hover{background:#1EBE5B;transform:translateY(-2px)}
+  .btn-wa svg{width:20px;height:20px;fill:#fff;flex-shrink:0}
+  .err{color:#B3261E;font-size:.78rem;margin-top:10px;display:none}
+  .err.show{display:block}
+  .form-note{margin-top:12px;font-size:.74rem;color:var(--muted);text-align:center}
+
+  /* ---------------- Conversion band ---------------- */
+  .visit{background:var(--wine);color:#FDEDE6;padding:80px 0;position:relative;overflow:hidden}
+  .visit::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(700px 340px at 88% 15%,rgba(148,200,178,.16),transparent 70%);
+  }
+  .visit-inner{position:relative;display:flex;align-items:center;gap:56px;flex-wrap:wrap}
+  .seal-since{width:132px;height:132px;flex-shrink:0}
+  .visit-copy{flex:1;min-width:280px}
+  .visit h2{color:#FFF6EE;font-size:clamp(1.9rem,3vw,2.6rem);margin-bottom:24px;max-width:14em}
+  .visit-meta{display:flex;gap:46px;flex-wrap:wrap}
+  .visit-meta .label{
+    display:block;font-size:.62rem;letter-spacing:.26em;text-transform:uppercase;
+    color:var(--mint);font-weight:600;margin-bottom:7px;
+  }
+  .visit-meta p{font-size:.92rem;font-weight:300;color:#F7E3DC;line-height:1.65}
+  .visit-cta{flex-shrink:0}
+
+  /* ---------------- Footer ---------------- */
+  .site-footer{background:var(--cream);padding:44px 0;border-top:1px solid var(--line)}
+  .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:26px;flex-wrap:wrap}
+  .footer-brand{display:flex;align-items:center;gap:11px}
+  .footer-brand .seal{height:126px;width:auto;max-width:300px;object-fit:contain;border-radius:20px}
+  .footer-brand b{font-family:var(--script);font-size:1.3rem;color:var(--wine);font-weight:400}
+  .footer-nav{display:flex;gap:24px;flex-wrap:wrap}
+  .footer-nav a{font-size:.8rem;color:var(--muted);transition:color .25s}
+  .footer-nav a:hover{color:var(--wine)}
+  .footer-copy{font-size:.74rem;color:var(--muted);letter-spacing:.04em}
+  .footer-side{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+  .social{
+    display:inline-flex;align-items:center;gap:9px;font-size:.82rem;font-weight:500;
+    color:var(--muted);padding:9px 16px;border:1px solid rgba(148,200,178,.55);
+    border-radius:999px;background:#FFFDF8;transition:.3s;
+  }
+  .social:hover{color:var(--wine);border-color:var(--mint);transform:translateY(-2px)}
+  .social svg{width:17px;height:17px;fill:none;stroke:var(--wine);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+  .social svg.brand-fill{fill:var(--wine);stroke:none}
+  .social b{font-weight:600;color:var(--wine)}
+
+  /* ---------------- Sucursales ---------------- */
+  .branches{padding:0 0 110px}
+  .branch-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .branch-card{
+    background:var(--card);border-radius:16px;padding:26px 24px;
+    border:1px solid rgba(148,200,178,.35);transition:.4s cubic-bezier(.4,0,.2,1);
+  }
+  .branch-card:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:var(--mint)}
+  .branch-card .pin{
+    width:42px;height:42px;border-radius:50%;background:var(--mint-soft);
+    display:grid;place-items:center;margin-bottom:16px;
+  }
+  .branch-card .pin svg{width:20px;height:20px;fill:none;stroke:#40685A;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .branch-card h3{font-size:1.15rem;margin-bottom:8px}
+  .branch-card p{font-size:.8rem;color:var(--muted);line-height:1.7;font-weight:300;word-wrap:break-word}
+  .branch-map{
+    display:inline-flex;align-items:center;gap:7px;margin-top:16px;
+    font-size:.76rem;font-weight:600;letter-spacing:.04em;color:var(--wine);
+    background:#FFFDF8;border:1px solid rgba(148,200,178,.6);border-radius:999px;padding:8px 15px;transition:.3s;
+  }
+  .branch-map svg{width:14px;height:14px;flex-shrink:0}
+  .branch-map:hover{background:var(--mint-soft);border-color:var(--mint);transform:translateY(-2px)}
+  @media (max-width:900px){.branch-grid{grid-template-columns:1fr 1fr}}
+  @media (max-width:680px){.branch-grid{grid-template-columns:1fr}}
+
+  /* ---------------- Reveal ---------------- */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.4,0,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------------- Responsive ---------------- */
+  @media (max-width:1040px){
+    .nav{
+      position:fixed;inset:180px 0 auto 0;background:var(--cream);
+      flex-direction:column;gap:0;padding:8px 24px 22px;margin:0;
+      border-bottom:1px solid rgba(155,31,75,.12);
+      transform:translateY(-140%);transition:transform .4s cubic-bezier(.4,0,.2,1);
+      box-shadow:0 24px 40px -30px rgba(74,44,42,.6);
+    }
+    .nav.open{transform:none}
+    .nav a{padding:14px 0;border-bottom:1px solid rgba(74,44,42,.07);font-size:.95rem}
+    .nav a:last-child{border-bottom:0}
+    .menu-toggle{display:block;margin-left:auto;order:3}
+    .header-ctas{order:2;margin-left:auto}
+    .header-inner{gap:16px;height:168px}
+    .nav{inset:168px 0 auto 0}
+    .brand .seal{height:152px}
+  }
+  @media (max-width:900px){
+    .brand .seal{height:128px}
+    .hero{padding:56px 0 44px}
+    .hero-grid{grid-template-columns:1fr;gap:46px}
+    .hero-figure{order:-1}
+    .menu-grid{grid-template-columns:1fr}
+    .trust-grid{gap:20px}
+    .visit-inner{gap:34px}
+    .seal-since{width:104px;height:104px}
+  }
+  @media (max-width:680px){
+    .container{width:calc(100% - 36px)}
+    .brand .seal{height:96px}
+    .header-inner{height:112px}
+    .nav{inset:112px 0 auto 0}
+    .brand-name{font-size:1.35rem}
+    .brand-tag{font-size:.5rem;letter-spacing:.2em}
+    .header-ctas .btn-outline{display:none}
+    .gourmet{font-size:.85rem}
+    .gourmet th,.gourmet td{padding:10px 6px}
+    .trust-grid{grid-template-columns:1fr;max-width:340px}
+    .trust-item{justify-content:flex-start}
+    .products{padding:66px 0 72px}
+    .visit-meta{gap:26px}
+    .visit-cta{width:100%}
+    .btn-mint{width:100%}
+    .hero-figure figcaption{left:22px;bottom:22px;padding:10px 14px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="#home">
+      <img class="seal" src="logo.png" alt="Logo Dolce Meza">
+    </a>
+
+    <nav class="nav" id="nav">
+      <a href="#home" class="active">Inicio</a>
+      <a href="#shop">Tienda</a>
+      <a href="#galeria">Pasteles</a>
+      <a href="#about">Nosotros</a>
+      <a href="#sucursales">Visítanos</a>
+      <a href="#contact">Contacto</a>
+    </nav>
+
+    <div class="header-ctas">
+      <a href="#pedido" class="btn btn-primary">Ordena ahora</a>
+      <a href="#galeria" class="btn btn-outline">Ver sabores</a>
+    </div>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="home">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy reveal">
+        <span class="pill">Hecho a mano a diario</span>
+        <h1>Te mereces algo <em>Dolce</em></h1>
+        <p class="lead">
+          Una pequeña panadería donde cada pastel comienza al amanecer — mantequilla real, fruta
+          de temporada y la paciencia obstinada de hacer las cosas despacio. Frambuesa, pistache,
+          menta fresca y ralladura de limón, mezclados a mano y acabados con luz de ventana.
+        </p>
+        <div class="hero-ctas">
+          <a href="#galeria" class="btn btn-primary">Ver pasteles</a>
+          <a href="#about" class="btn btn-outline">Nuestra historia</a>
+        </div>
+      </div>
+
+      <figure class="hero-figure reveal">
+        <div class="hero-figure__inner">
+          
+          <img src="img/pinon-rosa.png" alt="Pastel de Pi&#241;&#243;n Rosa">
+        
+        </div>
+        <figcaption>
+          <b>Pi&ntilde;&oacute;n</b>
+          <span>Favorito no. 01</span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ TRUST BAR ============ -->
+  <section class="trust" id="about">
+    <div class="container">
+      <div class="trust-grid">
+        <div class="trust-item reveal">
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 3v2M12 19v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M3 12h2M19 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/><circle cx="12" cy="12" r="4"/></svg>
+          </div>
+          <div>
+            <h4>Fresco a diario</h4>
+            <p>Horneado cada mañana, nunca después del anochecer.</p>
+          </div>
+        </div>
+        <div class="trust-item reveal">
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24"><path d="M9 3h6l1 4a4 4 0 0 1-8 0Z"/><path d="M12 11v7"/><path d="M8.5 21h7"/><path d="M10 18h4"/></svg>
+          </div>
+          <div>
+            <h4>Hecho artesanal</h4>
+            <p>Lotes pequeños, mezclados y acabados a mano.</p>
+          </div>
+        </div>
+        <div class="trust-item reveal">
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 7h10v9H3Z"/><path d="M13 10h4l3 3v3h-7Z"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
+          </div>
+          <div>
+            <h4>Entrega local</h4>
+            <p>El mismo día en todo el barrio.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="band-mint">
+    <p>
+      <svg viewBox="0 0 24 24"><path d="M2 12c5-8 15-8 20 0-5 8-15 8-20 0Z" opacity=".25"/><path d="M2 12c5-8 15-8 20 0"/></svg>
+      Horneado fresco cada mañana &middot; lotes pequeños &middot; entregado con cariño
+      <svg viewBox="0 0 24 24"><path d="M2 12c5-8 15-8 20 0-5 8-15 8-20 0Z" opacity=".25"/><path d="M2 12c5-8 15-8 20 0"/></svg>
+    </p>
+  </div>
+
+    <!-- ============ TIRAS DE SABORES ============ -->
+  <section class="carousel" id="galeria">
+    <div class="container">
+      <div class="section-head reveal" id="shop">
+        <span class="eyebrow">Tienda de sabores</span>
+        <h2>Elige tu pastel</h2>
+        <p>Desliza cada secci&oacute;n para ver todos los sabores, con foto o sin ella.</p>
+      </div>
+    </div>
+
+    <!-- Cl&aacute;sicos -->
+    <div class="cat-block">
+      <div class="container cat-head">
+        <div class="title"><h3><span class="heart">&hearts;</span> Nuestros Cl&aacute;sicos</h3><span class="prices-tag">Desde $80</span></div>
+        <div class="cat-arrows">
+          <button class="arrow" data-prev aria-label="Anterior">&lsaquo;</button>
+          <button class="arrow" data-next aria-label="Siguiente">&rsaquo;</button>
+        </div>
+      </div>
+      <div class="strip-wrap">
+        <div class="strip">
+          <figure class="slide"><div class="tile" role="img" aria-label="Sabor Almendra">🎂</div><figcaption><b>Almendra</b><small>Desde $80</small></figcaption></figure>
+          <figure class="slide"><div class="tile" role="img" aria-label="Sabor Cajeta">🎂</div><figcaption><b>Cajeta</b><small>Desde $80</small></figcaption></figure>
+          <figure class="slide"><div class="tile" role="img" aria-label="Sabor Capuchino">🎂</div><figcaption><b>Capuchino</b><small>Desde $80</small></figcaption></figure>
+          <figure class="slide"><img src="img/chocolate.png" alt="Pastel de Chocolate"><figcaption><b>Chocolate</b><small>Desde $80</small></figcaption></figure>
+          <figure class="slide"><img src="img/durazno.png" alt="Pastel de Durazno"><figcaption><b>Durazno</b><small>Desde $80</small></figcaption></figure>
+          <figure class="slide"><div class="tile" role="img" aria-label="Sabor Fresa">🎂</div><figcaption><b>Fresa</b><small>Desde $80</small></figcaption></figure>
+          <figure class="slide"><div class="tile" role="img" aria-label="Sabor Moka">🎂</div><figcaption><b>Moka</b><small>Desde $80</small></figcaption></figure>
+          <figure class="slide"><div class="tile" role="img" aria-label="Sabor Nuez">🎂</div><figcaption><b>Nuez</b><small>Desde $80</small></figcaption></figure>
+          <figure class="slide"><div class="tile" role="img" aria-label="Sabor Oreo">🎂</div><figcaption><b>Oreo</b><small>Desde $80</small></figcaption></figure>
+          <figure class="slide"><div class="tile" role="img" aria-label="Sabor Pi&ntilde;a Coco">🎂</div><figcaption><b>Pi&ntilde;a Coco</b><small>Desde $80</small></figcaption></figure>
+          <figure class="slide"><img src="img/chocochispas.png" alt="Pastel de Chocochispas"><figcaption><b>Chocochispas</b><small>Desde $80</small></figcaption></figure>
+          <figure class="slide"><img src="img/red-velvet.png" alt="Pastel de Red Velvet"><figcaption><b>Red Velvet</b><small>Desde $80</small></figcaption></figure>
+          <figure class="slide"><img src="img/pistache.png" alt="Pastel de Pistache"><figcaption><b>Pistache</b><small>Desde $80</small></figcaption></figure>
+          <figure class="slide"><div class="tile" role="img" aria-label="Sabor Crema Pastelera">🎂</div><figcaption><b>Crema Pastelera</b><small>Desde $80</small></figcaption></figure>
+        </div>
+      </div>
+    </div>
+
+    <!-- De Frutas -->
+    <div class="cat-block">
+      <div class="container cat-head">
+        <div class="title"><h3><span class="heart">&hearts;</span> De Frutas</h3><span class="prices-tag">Desde $85</span></div>
+        <div class="cat-arrows">
+          <button class="arrow" data-prev aria-label="Anterior">&lsaquo;</button>
+          <button class="arrow" data-next aria-label="Siguiente">&rsaquo;</button>
+        </div>
+      </div>
+      <div class="strip-wrap">
+        <div class="strip">
+          <figure class="slide"><img src="img/frutas.png" alt="Pastel de De Frutas"><figcaption><b>De Frutas</b><small>Desde $85</small></figcaption></figure>
+        </div>
+      </div>
+    </div>
+
+    <!-- Especiales -->
+    <div class="cat-block">
+      <div class="container cat-head">
+        <div class="title"><h3><span class="heart">&hearts;</span> Especiales</h3><span class="prices-tag">Desde $90</span></div>
+        <div class="cat-arrows">
+          <button class="arrow" data-prev aria-label="Anterior">&lsaquo;</button>
+          <button class="arrow" data-next aria-label="Siguiente">&rsaquo;</button>
+        </div>
+      </div>
+      <div class="strip-wrap">
+        <div class="strip">
+          <figure class="slide"><div class="tile" role="img" aria-label="Sabor Carlos V">🎂</div><figcaption><b>Carlos V</b><small>Desde $90</small></figcaption></figure>
+          <figure class="slide"><img src="img/crunch.png" alt="Pastel de Crunch"><figcaption><b>Crunch</b><small>Desde $90</small></figcaption></figure>
+          <figure class="slide"><img src="img/ferrero.png" alt="Pastel de Ferrero"><figcaption><b>Ferrero</b><small>Desde $90</small></figcaption></figure>
+          <figure class="slide"><div class="tile" role="img" aria-label="Sabor Kinder">🎂</div><figcaption><b>Kinder</b><small>Desde $90</small></figcaption></figure>
+          <figure class="slide"><div class="tile" role="img" aria-label="Sabor Mazap&aacute;n">🎂</div><figcaption><b>Mazap&aacute;n</b><small>Desde $90</small></figcaption></figure>
+          <figure class="slide"><div class="tile" role="img" aria-label="Sabor Nutella">🎂</div><figcaption><b>Nutella</b><small>Desde $90</small></figcaption></figure>
+          <figure class="slide"><img src="img/snickers.png" alt="Pastel de Snicker"><figcaption><b>Snicker</b><small>Desde $90</small></figcaption></figure>
+          <figure class="slide"><div class="tile" role="img" aria-label="Sabor Turin">🎂</div><figcaption><b>Turin</b><small>Desde $90</small></figcaption></figure>
+          <figure class="slide"><div class="tile" role="img" aria-label="Sabor Lim&oacute;n Queso">🎂</div><figcaption><b>Lim&oacute;n Queso</b><small>Desde $90</small></figcaption></figure>
+          <figure class="slide"><div class="tile" role="img" aria-label="Sabor Zarzamora Queso">🎂</div><figcaption><b>Zarzamora Queso</b><small>Desde $90</small></figcaption></figure>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gourmet -->
+    <div class="cat-block">
+      <div class="container cat-head">
+        <div class="title"><h3><span class="heart">&hearts;</span> Gourmet</h3><span class="prices-tag">Desde $100</span></div>
+        <div class="cat-arrows">
+          <button class="arrow" data-prev aria-label="Anterior">&lsaquo;</button>
+          <button class="arrow" data-next aria-label="Siguiente">&rsaquo;</button>
+        </div>
+      </div>
+      <div class="strip-wrap">
+        <div class="strip">
+          <figure class="slide"><img src="img/pinon-rosa.png" alt="Pastel de Piñón Rosa"><figcaption><b>Pi&ntilde;&oacute;n Rosa</b><small>Desde $120</small></figcaption></figure>
+          <figure class="slide"><div class="tile" role="img" aria-label="Sabor Pi&ntilde;&oacute;n Blanco">🎂</div><figcaption><b>Pi&ntilde;&oacute;n Blanco</b><small>Desde $100</small></figcaption></figure>
+          <figure class="slide"><img src="img/baileys.png" alt="Pastel de Baileys"><figcaption><b>Baileys</b><small>Desde $105</small></figcaption></figure>
+        </div>
+      </div>
+    </div>
+
+    <!-- Postres -->
+    <div class="cat-block">
+      <div class="container cat-head">
+        <div class="title"><h3><span class="heart">&hearts;</span> Postres</h3><span class="prices-tag">Desde $210</span></div>
+        <div class="cat-arrows">
+          <button class="arrow" data-prev aria-label="Anterior">&lsaquo;</button>
+          <button class="arrow" data-next aria-label="Siguiente">&rsaquo;</button>
+        </div>
+      </div>
+      <div class="strip-wrap">
+        <div class="strip">
+          <figure class="slide"><img src="img/tarta.png" alt="Tarta"><figcaption><b>Tarta</b><small>Precio en sucursal</small></figcaption></figure>
+          <figure class="slide"><img src="img/gelatina-de-frutas.png" alt="Gelatina de Frutas"><figcaption><b>Gelatina de Frutas</b><small>$210</small></figcaption></figure>
+          <figure class="slide"><div class="tile" role="img" aria-label="Sabor Gelatina Piñón">🎂</div><figcaption><b>Gelatina Pi&ntilde;&oacute;n</b><small>$210</small></figcaption></figure>
+          <figure class="slide"><img src="img/chocoflan.png" alt="Choco Flan"><figcaption><b>Choco Flan</b><small>$250</small></figcaption></figure>
+          <figure class="slide"><img src="img/cheese-cake.png" alt="Cheese Cake"><figcaption><b>Cheese Cake</b><small>$350</small></figcaption></figure>
+          <figure class="slide"><img src="img/mil-hojas.png" alt="Mil Hojas"><figcaption><b>Mil Hojas</b><small>$265</small></figcaption></figure>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+    <!-- ============ PEDIDOS ESPECIALES ============ -->
+  <section class="specials" id="especiales">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Hecho para tu evento</span>
+        <h2>Pedidos especiales</h2>
+        <p>Bodas, XV a&ntilde;os, primera comuni&oacute;n y decoraciones &uacute;nicas. Cu&eacute;ntanos tu idea y la llevamos a tu mesa.</p>
+      </div>
+
+      <div class="special-grid">
+        <article class="special-card reveal">
+          <div class="special-icon">&#128141;</div>
+          <h3>Bodas</h3>
+          <p>Pasteles por niveles, corte fino, flores naturales y un sabor que deja huella en tu d&iacute;a.</p>
+          <a class="quote" data-msg="Hola Dolce Meza, quiero cotizar un pastel para mi Boda" href="#">Cotizar por WhatsApp</a>
+        </article>
+        <article class="special-card reveal">
+          <div class="special-icon">&#128081;</div>
+          <h3>XV A&ntilde;os</h3>
+          <p>Dise&ntilde;os modernos o tradicionales para celebrar a la quincea&ntilde;era con mucho estilo.</p>
+          <a class="quote" data-msg="Hola Dolce Meza, quiero cotizar un pastel para XV Años" href="#">Cotizar por WhatsApp</a>
+        </article>
+        <article class="special-card reveal">
+          <div class="special-icon">&#10024;</div>
+          <h3>Primera Comuni&oacute;n</h3>
+          <p>Modelos delicados y elegantes, decorados al gusto de cada celebraci&oacute;n.</p>
+          <a class="quote" data-msg="Hola Dolce Meza, quiero cotizar un pastel para Primera Comunión" href="#">Cotizar por WhatsApp</a>
+        </article>
+        <article class="special-card reveal">
+          <div class="special-icon">&#127912;</div>
+          <h3>Decoraciones Especiales</h3>
+          <p>Personajes, tem&aacute;ticas, figuras personalizadas y detalles que hacen &uacute;nico tu pastel.</p>
+          <a class="quote" data-msg="Hola Dolce Meza, quiero cotizar un pastel con decoración especial" href="#">Cotizar por WhatsApp</a>
+        </article>
+      </div>
+
+      <p class="menu-note reveal">Cotizaciones sin costo por WhatsApp &middot; confirmamos tama&ntilde;o, dise&ntilde;o y precio</p>
+    </div>
+  </section>
+
+    <!-- ============ PEDIDO ============ -->
+  <section class="pedido" id="pedido">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Pedido por WhatsApp</span>
+        <h2>Ordena ahora</h2>
+        <p>Arma tu pastel, elige d&oacute;nde y cu&aacute;ndo lo recoges. Tu pedido llega listo a nuestro WhatsApp.</p>
+      </div>
+
+      <div class="pedido-wrap">
+        <div class="pedido-intro reveal">
+          <h3>As&iacute; de f&aacute;cil</h3>
+          <p class="lead">Escoge tu pastel, confirma tama&ntilde;o y sucursal, y en menos de un minuto enviamos tu pedido a la panader&iacute;a.</p>
+          <ul class="pedido-steps">
+            <li><b>1</b> Elige categor&iacute;a y sabor</li>
+            <li><b>2</b> Tama&ntilde;o seg&uacute;n tus invitados</li>
+            <li><b>3</b> Sucursal, fecha y hora de recogida</li>
+            <li><b>4</b> Escribe la dedicatoria y tus datos</li>
+            <li><b>5</b> Env&iacute;alo por WhatsApp</li>
+          </ul>
+          <p class="form-note" style="text-align:left">Confirmamos tu pedido por WhatsApp y te damos el total exacto.</p>
+        </div>
+
+        <form class="form-card reveal" id="orderForm" novalidate>
+          <div class="row2">
+            <div class="field">
+              <label for="cat">Categor&iacute;a</label>
+              <select id="cat">
+                <option value="Clásicos">Clásicos</option>
+                <option value="De Frutas">De Frutas</option>
+                <option value="Especiales">Especiales</option>
+                <option value="Gourmet">Gourmet</option>
+                <option value="Postres">Postres</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="sabor">Sabor</label>
+              <select id="sabor"></select>
+            </div>
+          </div>
+
+          <div class="field" id="sizeField">
+            <label>Tama&ntilde;o</label>
+            <div class="opts" id="sizeOpts">
+              <label class="opt"><input type="radio" name="tamano" value="Individual"><span>Individual<small>1 a 3 pers.</small></span></label>
+              <label class="opt"><input type="radio" name="tamano" value="Chico"><span>Chico<small>10 pers.</small></span></label>
+              <label class="opt"><input type="radio" name="tamano" value="Mediano"><span>Mediano<small>15 pers.</small></span></label>
+              <label class="opt"><input type="radio" name="tamano" value="Grande"><span>Grande<small>25 pers.</small></span></label>
+            </div>
+            <p class="form-note" id="postreNote" style="display:none">Los postres se venden individuales.</p>
+          </div>
+
+          <div class="field">
+            <label>Sucursal de recogida</label>
+            <div class="opts" id="sucOpts">
+              <label class="opt"><input type="radio" name="suc" value="San Manuel"><span>San Manuel<small>Av. San Francisco 1846</small></span></label>
+              <label class="opt"><input type="radio" name="suc" value="Av. Margaritas"><span>Av. Margaritas<small>Av. las Margaritas 261-L4</small></span></label>
+              <label class="opt"><input type="radio" name="suc" value="Xonaca"><span>Xonaca<small>Calle 22 Nte.</small></span></label>
+              <label class="opt"><input type="radio" name="suc" value="La Joya"><span>La Joya<small>Calle Cobre 3505, L3</small></span></label>
+            </div>
+          </div>
+
+          <div class="row2">
+            <div class="field">
+              <label for="fecha">Fecha de recogida</label>
+              <input type="date" id="fecha">
+            </div>
+            <div class="field">
+              <label for="hora">Hora de recogida</label>
+              <input type="time" id="hora">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="dedica">Dedicatoria que llevar&aacute; el pastel <em style="display:inline;font-style:normal;text-transform:none;letter-spacing:.02em;font-weight:400;color:var(--muted)">(opcional)</em></label>
+            <textarea id="dedica" placeholder="Ej. &iexcl;Feliz cumplea&ntilde;os, mam&aacute;! Te amamos &hearts;"></textarea>
+          </div>
+
+          <div class="row2">
+            <div class="field">
+              <label for="nombre">Tu nombre</label>
+              <input type="text" id="nombre" placeholder="Nombre y apellido">
+            </div>
+            <div class="field">
+              <label for="tel">Tu tel&eacute;fono</label>
+              <input type="tel" id="tel" placeholder="10 d&iacute;gitos">
+            </div>
+          </div>
+
+          <div class="field">
+            <label>M&eacute;todo de pago</label>
+            <div class="opts">
+              <label class="opt"><input type="radio" name="pago" value="Efectivo"><span>Efectivo<small>Al recoger</small></span></label>
+              <label class="opt"><input type="radio" name="pago" value="Transferencia"><span>Transferencia<small>Te enviamos los datos</small></span></label>
+              <label class="opt"><input type="radio" name="pago" value="Tarjeta"><span>Tarjeta<small>Al recoger</small></span></label>
+            </div>
+          </div>
+
+          <div class="field" id="reviewField">
+            <label>Rese&ntilde;a en Google Maps</label>
+            <label class="opt review-opt">
+              <input type="checkbox" id="reviewChk">
+              <span>Enviar&eacute; la captura de mi calificaci&oacute;n o rese&ntilde;a<small>Te aplicamos 10% de descuento en este pedido</small></span>
+            </label>
+            <a class="review-link" href="https://maps.app.goo.gl/rqdCmvY58GcfDDEQA" target="_blank" rel="noopener">&rarr; &iquest;A&uacute;n no has calificado? Hazlo aqu&iacute;</a>
+            <p class="form-note" style="text-align:left">Adjunta la captura en el chat de WhatsApp para aplicar el 10% de descuento.</p>
+          </div>
+
+          <div class="price-est">
+            <span>Precio estimado</span>
+            <div class="price-num">
+              <b id="precioEst">&mdash;</b>
+              <small id="precioAntes"></small>
+            </div>
+          </div>
+
+          <p class="err" id="formErr">Faltan datos: revisa sabor, tama&ntilde;o, sucursal, fecha, hora, m&eacute;todo de pago, nombre y tel&eacute;fono.</p>
+
+          <button class="btn-wa" type="submit">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.42 14.94L2 22l5.16-1.51A9.94 9.94 0 1 0 12.04 2Zm5.85 14.23c-.25.7-1.45 1.33-2 1.38-.53.05-1.02.24-3.43-.71-2.9-1.16-4.74-4.19-4.88-4.38-.14-.2-1.17-1.56-1.17-2.97s.74-2.1 1-2.39c.26-.29.57-.36.76-.36.19 0 .38 0 .55.01.18.01.41-.07.65.5.24.58.82 2 .89 2.15.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.17-.3.38-.42.5-.14.14-.29.29-.13.57.17.29.74 1.22 1.59 1.98 1.09.98 2 1.28 2.29 1.42.29.14.46.12.63-.07.17-.19.72-.84.91-1.13.19-.29.38-.24.64-.14.26.09 1.66.78 1.95.93.29.14.48.21.55.33.07.12.07.68-.18 1.44Z"/></svg>
+            Enviar pedido por WhatsApp
+          </button>
+          <p class="form-note">Al enviar se abrir&aacute; WhatsApp con tu pedido listo; s&oacute;lo presiona enviar.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+<!-- ============ SUCURSALES ============ -->
+  <section class="branches" id="sucursales">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Vis&iacute;tanos</span>
+        <h2>Nuestras sucursales</h2>
+        <p>Cuatro puntos en Puebla para que tu pastel est&eacute; siempre cerca.</p>
+      </div>
+
+      <div class="branch-grid">
+        <article class="branch-card reveal">
+          <div class="pin"><svg viewBox="0 0 24 24"><path d="M12 21s-7-5.6-7-11a7 7 0 0 1 14 0c0 5.4-7 11-7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg></div>
+          <h3>San Manuel</h3>
+          <p>Av. San Francisco 1846,<br>Jardines de San Manuel,<br>C.P. 72570, Heroica Puebla de Zaragoza, Pue.</p>
+          <a class="branch-map" href="https://maps.app.goo.gl/rqdCmvY58GcfDDEQA" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.6-7-11a7 7 0 0 1 14 0c0 5.4-7 11-7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>C&oacute;mo llegar</a>
+        </article>
+        <article class="branch-card reveal">
+          <div class="pin"><svg viewBox="0 0 24 24"><path d="M12 21s-7-5.6-7-11a7 7 0 0 1 14 0c0 5.4-7 11-7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg></div>
+          <h3>Av. Margaritas</h3>
+          <p>Av. las Margaritas 261-L4,<br>Bugambilias,<br>C.P. 72580, Heroica Puebla de Zaragoza, Pue.</p>
+          <a class="branch-map" href="https://maps.app.goo.gl/mbRPyU7EuL54Mxp27" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.6-7-11a7 7 0 0 1 14 0c0 5.4-7 11-7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>C&oacute;mo llegar</a>
+        </article>
+        <article class="branch-card reveal">
+          <div class="pin"><svg viewBox="0 0 24 24"><path d="M12 21s-7-5.6-7-11a7 7 0 0 1 14 0c0 5.4-7 11-7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg></div>
+          <h3>Xonaca</h3>
+          <p>Calle 22 Nte.,<br>Xonaca,<br>C.P. 72280, Heroica Puebla de Zaragoza, Pue.</p>
+          <a class="branch-map" href="https://maps.app.goo.gl/RaXDQ4hpH99HJHRX7" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.6-7-11a7 7 0 0 1 14 0c0 5.4-7 11-7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>C&oacute;mo llegar</a>
+        </article>
+        <article class="branch-card reveal">
+          <div class="pin"><svg viewBox="0 0 24 24"><path d="M12 21s-7-5.6-7-11a7 7 0 0 1 14 0c0 5.4-7 11-7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg></div>
+          <h3>La Joya</h3>
+          <p>Calle Cobre n&uacute;m. 3505,<br>Local 3, Colonia La Joya,<br>Puebla, Pue.</p>
+          <a class="branch-map" href="https://maps.app.goo.gl/4g3sSKbYFZEqqYcE9" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.6-7-11a7 7 0 0 1 14 0c0 5.4-7 11-7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>C&oacute;mo llegar</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONVERSION BAND ============ -->
+  <section class="visit" id="visit">
+    <div class="container visit-inner">
+      <div class="visit-copy reveal">
+        <h2>Acogedor, dulce y hecho para los momentos</h2>
+        <div class="visit-meta">
+          <div>
+            <span class="label">Encu&eacute;ntranos</span>
+            <p>San Manuel &middot; Av. Margaritas<br>Xonaca &middot; La Joya, Puebla</p>
+          </div>
+          <div>
+            <span class="label">Horario</span>
+            <p>Lunes &ndash; Domingo &middot; 9:00 &ndash; 21:00</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="visit-cta reveal" id="contact">
+        <a href="#sucursales" class="btn btn-mint">Vis&iacute;tanos</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img class="seal" src="logo.png" alt="Logo Dolce Meza">
+    </div>
+
+    <nav class="footer-nav">
+      <a href="#home">Inicio</a>
+      <a href="#shop">Tienda</a>
+      <a href="#galeria">Pasteles</a>
+      <a href="#about">Nosotros</a>
+      <a href="#sucursales">Visítanos</a>
+      <a href="#contact">Contacto</a>
+    </nav>
+
+    <div class="footer-side">
+      <a class="social" href="https://www.instagram.com/dolce.meza" target="_blank" rel="noopener" aria-label="Instagram de Dolce Meza">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="5.5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.3" cy="6.7" r="1.15" fill="var(--wine)" stroke="none"/>
+        </svg>
+        <b>Dolce Meza</b> &middot; @dolce.meza
+      </a>
+      <a class="social" href="https://www.facebook.com/DolceMeza.pasteleria" target="_blank" rel="noopener" aria-label="Dolce Meza en Facebook">
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="brand-fill"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z"/></svg>
+        Facebook
+      </a>
+      <a class="social" href="https://www.tiktok.com/@dolcemeza" target="_blank" rel="noopener" aria-label="Dolce Meza en TikTok">
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="brand-fill"><path d="M19.6 5.8a5.3 5.3 0 0 1-2.7-3.3h-3.1v13.2a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9.7a6.1 6.1 0 0 0-.9-.1 6 6 0 1 0 6 6V9.6a8.5 8.5 0 0 0 4.7 1.4V8a5.3 5.3 0 0 1-2-2.2Z"/></svg>
+        TikTok
+      </a>
+      <p class="footer-copy">&copy; 2026 Dolce Meza Pasteler&iacute;a</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('menuToggle');
+  const nav = document.getElementById('nav');
+  toggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    toggle.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open);
+  });
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    nav.classList.remove('open');
+    toggle.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: .12, rootMargin: '0px 0px -40px' });
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    el.style.transitionDelay = (i % 3) * 90 + 'ms';
+    io.observe(el);
+  });
+
+  // Tiras de sabores: desplazamiento automático
+  const preferQuiet = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('.cat-block').forEach(block => {
+    const wrap = block.querySelector('.strip-wrap');
+    const strip = block.querySelector('.strip');
+    if (!wrap || !strip) return;
+    const applyFit = () => block.classList.toggle('is-fit', strip.scrollWidth <= wrap.clientWidth);
+    applyFit();
+    window.addEventListener('resize', applyFit);
+    strip.querySelectorAll('img').forEach(im => im.addEventListener('load', applyFit));
+    let timer = null;
+    const slideW = () => {
+      const s = strip.querySelector('.slide');
+      return (s ? s.getBoundingClientRect().width : 320) + 22;
+    };
+    const max = () => strip.scrollWidth - wrap.clientWidth;
+    const stop = () => { if (timer) { clearInterval(timer); timer = null; } };
+    const start = () => {
+      if (timer || preferQuiet || max() <= 4) return;
+      timer = setInterval(() => {
+        if (max() <= 4) return;
+        if (wrap.scrollLeft >= max() - 4) {
+          wrap.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          wrap.scrollBy({ left: slideW(), behavior: 'smooth' });
+        }
+      }, 3200);
+    };
+    const go = dir => {
+      const t = dir > 0 ? Math.min(wrap.scrollLeft + slideW(), max()) : Math.max(wrap.scrollLeft - slideW(), 0);
+      stop();
+      wrap.scrollTo({ left: t, behavior: 'smooth' });
+      start();
+    };
+    block.querySelector('[data-prev]').addEventListener('click', () => go(-1));
+    block.querySelector('[data-next]').addEventListener('click', () => go(1));
+    wrap.addEventListener('mouseenter', stop);
+    wrap.addEventListener('mouseleave', start);
+    wrap.addEventListener('pointerdown', stop);
+    const ioC = new IntersectionObserver(es => {
+      es.forEach(e => { if (e.isIntersecting) start(); else stop(); });
+    }, { threshold: .15 });
+    ioC.observe(block);
+  });
+
+  // ------------- Pedido: formulario a WhatsApp -------------
+  const CAT_SABORES = {
+    'Clásicos': ['Almendra','Cajeta','Capuchino','Chocolate','Durazno','Fresa','Moka','Nuez','Oreo','Piña Coco','Chocochispas','Red Velvet','Pistache','Crema Pastelera'],
+    'De Frutas': ['De Frutas'],
+    'Especiales': ['Carlos V','Crunch','Ferrero','Kinder','Mazapán','Nutella','Snicker','Turin','Limón Queso','Zarzamora Queso'],
+    'Gourmet': ['Piñón Rosa','Piñón Blanco','Baileys'],
+    'Postres': ['Choco Flan','Cheese Cake','Gelatina de Frutas','Gelatina Piñón','Mil Hojas','Tarta']
+  };
+  const TAM_PERS = { Individual: '1 a 3 pers.', Chico: '10 pers.', Mediano: '15 pers.', Grande: '25 pers.' };
+  const PRECIO = {
+    'Clásicos':   { Individual: 80, Chico: 280, Mediano: 410, Grande: 560 },
+    'De Frutas':  { Individual: 85, Chico: 310, Mediano: 455, Grande: 620 },
+    'Especiales': { Individual: 90, Chico: 315, Mediano: 455, Grande: 610 }
+  };
+  const GOURMET = {
+    'Piñón Rosa':   { Individual: 120, Chico: 620,  Mediano: 885,  Grande: 1260 },
+    'Piñón Blanco': { Individual: 100, Chico: 340,  Mediano: 485,  Grande: 680 },
+    'Baileys':      { Individual: 105, Chico: 430,  Mediano: 600,  Grande: 860 }
+  };
+  const POSTRES = { 'Choco Flan': 250, 'Cheese Cake': 350, 'Gelatina de Frutas': 210, 'Gelatina Piñón': 210, 'Mil Hojas': 265, 'Tarta': null };
+  const SUCURSALES = {
+    'San Manuel': 'Av. San Francisco 1846, Jardines de San Manuel',
+    'Av. Margaritas': 'Av. las Margaritas 261-L4, Bugambilias',
+    'Xonaca': 'Calle 22 Nte., Xonaca',
+    'La Joya': 'Calle Cobre 3505, Local 3, La Joya'
+  };
+  // PON AQUI EL NUMERO: 52 + tu numero, sin espacios, sin '+'. Ejemplo: '521234567890'
+  const WHATSAPP_NUMBER = '522214089791';
+
+  const catSel = document.getElementById('cat');
+  const sabSel = document.getElementById('sabor');
+  const sizeField = document.getElementById('sizeField');
+  const postreNote = document.getElementById('postreNote');
+  const precEl = document.getElementById('precioEst');
+  const errEl = document.getElementById('formErr');
+  const fechaInput = document.getElementById('fecha');
+  const reviewChk = document.getElementById('reviewChk');
+  const precioAntes = document.getElementById('precioAntes');
+
+  const fillSabores = () => {
+    const list = CAT_SABORES[catSel.value] || [];
+    sabSel.innerHTML = list.map(f => '<option value="' + f + '">' + f + '</option>').join('');
+    updatePrecio();
+  };
+  const getTam = () => {
+    const r = document.querySelector('input[name=tamano]:checked');
+    return r ? r.value : '';
+  };
+  const showPrecio = (base, desc) => {
+    if (base == null) {
+      precEl.textContent = '—';
+      precioAntes.style.display = 'none';
+      return;
+    }
+    if (desc) {
+      precEl.textContent = '$' + desc.toLocaleString('es-MX');
+      precioAntes.style.display = '';
+      precioAntes.textContent = '$' + base.toLocaleString('es-MX');
+    } else {
+      precEl.textContent = '$' + base.toLocaleString('es-MX');
+      precioAntes.style.display = 'none';
+    }
+  };
+  const updatePrecio = () => {
+    const esPostre = catSel.value === 'Postres';
+    sizeField.style.display = esPostre ? 'none' : '';
+    postreNote.style.display = esPostre ? 'block' : 'none';
+    const sabor = sabSel.value;
+    const tam = getTam();
+    let p = null;
+    if (esPostre) p = POSTRES[sabor];
+    else if (catSel.value === 'Gourmet') p = tam && GOURMET[sabor] ? GOURMET[sabor][tam] : null;
+    else p = tam ? PRECIO[catSel.value][tam] : null;
+    const final = (reviewChk.checked && p != null) ? Math.round(p * 0.90) : p;
+    showPrecio(p, final);
+  };
+  catSel.addEventListener('change', fillSabores);
+  sabSel.addEventListener('change', updatePrecio);
+  document.querySelectorAll('input[name=tamano]').forEach(r => r.addEventListener('change', updatePrecio));
+  fechaInput.min = new Date().toISOString().split('T')[0];
+  reviewChk.addEventListener('change', updatePrecio);
+
+  document.getElementById('orderForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const cat = catSel.value;
+    const sabor = sabSel.value;
+    const esPostre = cat === 'Postres';
+    const tam = esPostre ? '' : getTam();
+    const sucEl = document.querySelector('input[name=suc]:checked');
+    const suc = sucEl ? sucEl.value : '';
+    const pagoEl = document.querySelector('input[name=pago]:checked');
+    const pago = pagoEl ? pagoEl.value : '';
+    const fecha = fechaInput.value;
+    const hora = document.getElementById('hora').value;
+    const dedi = document.getElementById('dedica').value.trim();
+    const nombre = document.getElementById('nombre').value.trim();
+    const tel = document.getElementById('tel').value.replace(/\D/g, '');
+    if (!sabor || (esPostre ? false : !tam) || !suc || !fecha || !hora || !pago || !nombre || tel.length < 8) {
+      errEl.classList.add('show');
+      errEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    errEl.classList.remove('show');
+    let precio = null;
+    if (esPostre) precio = POSTRES[sabor];
+    else if (cat === 'Gourmet') precio = GOURMET[sabor] ? GOURMET[sabor][tam] : null;
+    else precio = PRECIO[cat][tam];
+    const review = reviewChk.checked;
+    const desc = (review && precio != null) ? Math.round(precio * 0.10) : 0;
+    const total = (review && precio != null) ? precio - desc : precio;
+
+    const L = [];
+    L.push('Hola Dolce Meza, quiero ordenar un pastel:');
+    L.push('');
+    L.push('*Pastel:* ' + cat);
+    L.push('*Sabor:* ' + sabor);
+    if (!esPostre) L.push('*Tamaño:* ' + tam + ' (' + TAM_PERS[tam] + ')');
+    if (review && precio != null) {
+      L.push('*Precio aprox:* $' + total.toLocaleString('es-MX'));
+      L.push('*Descuento reseña -10%:* -$' + desc.toLocaleString('es-MX') + ' (te envío la captura)');
+    } else if (precio != null) {
+      L.push('*Precio aprox:* $' + precio.toLocaleString('es-MX'));
+    }
+    L.push('*Sucursal:* ' + suc + ' — ' + SUCURSALES[suc]);
+    L.push('*Pago:* ' + pago);
+    L.push('*Recojo el:* ' + fecha + ' a las ' + hora);
+    if (dedi) L.push('*Dedicatoria:* "' + dedi + '"');
+    L.push('');
+    L.push('*Nombre:* ' + nombre);
+    L.push('*Teléfono:* ' + tel);
+    window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(L.join('\n')), '_blank', 'noopener');
+  });
+
+  fillSabores();
+
+  // Pedidos especiales: cotizar por WhatsApp
+  document.querySelectorAll('.quote').forEach(a => a.addEventListener('click', e => {
+    e.preventDefault();
+    const msg = encodeURIComponent(a.getAttribute('data-msg') || 'Hola Dolce Meza, quiero cotizar un pastel especial');
+    window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + msg, '_blank', 'noopener');
+  }));
+</script>
+</body>
+</html>
