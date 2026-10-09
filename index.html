@@ -3,26 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dolce Meza — Panadería · Pasteles artesanales</title>
-<meta name="description" content="Panadería de lotes pequeños: pastel de frambuesa y pistache, tarta de limón con menta y pastel de berries con chantilly. Hechos a mano a diario.">
+<title>Dolce Meza &mdash; Pasteler&iacute;a &middot; Pasteles y postres | Siempre hay un huequito para lo dulce</title>
+<meta name="description" content="Pasteler&iacute;a local en Puebla: pasteles y postres frescos, sin conservadores a&ntilde;adidos, elaborados cada d&iacute;a por personas reales. Siempre hay un huequito para lo dulce.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Poppins:wght@300;400;500;600&family=Parisienne&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&family=Parisienne&display=swap" rel="stylesheet">
 <style>
   :root{
-    --cream:#FEF9F3;
-    --card:#F6F1EB;
-    --wine:#9B1F4B;
-    --wine-dark:#7E1739;
-    --mint:#94C8B2;
-    --mint-soft:#BFE1D5;
+    --cream:#f4f1e9;
+    --card:#ece7dc;
+    --wine:#a81148;
+    --wine-dark:#8a0e3b;
+    --mint:#7dccb2;
+    --mint-soft:#d7ece0;
+    --pink:#fc63a9;
+    --orange:#ff7031;
+    --yellow:#f9e47d;
     --ink:#4A2C2A;
     --body:#3B2A26;
     --muted:#8C7A72;
     --line:rgba(74,44,42,.12);
     --r:14px;
-    --serif:'Fraunces',Georgia,serif;
-    --sans:'Poppins',system-ui,sans-serif;
+    --serif:'Fredoka','Baloo 2',Georgia,serif;
+    --sans:'Poppins',-apple-system,'SF Pro Text','Segoe UI',system-ui,sans-serif;
     --script:'Parisienne',cursive;
     --shadow:0 18px 44px -22px rgba(74,44,42,.38);
   }
@@ -43,6 +46,7 @@
   ::selection{background:var(--wine);color:#FFF7EF}
   html{scrollbar-color:var(--mint) var(--cream)}
   h1,h2,h3{font-family:var(--serif);color:var(--wine);font-weight:600;letter-spacing:-.02em;line-height:1.1}
+  .hero h1 em{font-style:normal;color:var(--pink)}
 
   .container{width:min(1180px,100% - 48px);margin-inline:auto}
 
@@ -53,10 +57,10 @@
     padding:.85em 1.55em;border-radius:12px;border:1.5px solid transparent;
     cursor:pointer;transition:.28s cubic-bezier(.4,0,.2,1);white-space:nowrap;
   }
-  .btn-primary{background:var(--wine);color:#FFF7EF;box-shadow:0 10px 24px -14px rgba(155,31,75,.9)}
-  .btn-primary:hover{background:var(--wine-dark);transform:translateY(-2px);box-shadow:0 16px 30px -14px rgba(155,31,75,.75)}
+  .btn-primary{background:var(--wine);color:#FFF7EF;box-shadow:0 10px 24px -14px rgba(168,17,72,.9)}
+  .btn-primary:hover{background:var(--wine-dark);transform:translateY(-2px);box-shadow:0 16px 30px -14px rgba(168,17,72,.75)}
   .btn-outline{background:transparent;color:var(--wine);border-color:var(--mint)}
-  .btn-outline:hover{background:rgba(148,200,178,.22);border-color:#7FB79C;transform:translateY(-2px)}
+  .btn-outline:hover{background:rgba(125,204,178,.22);border-color:#64b99b;transform:translateY(-2px)}
   .btn-mint{background:var(--mint-soft);color:var(--wine);font-weight:600;padding:1.05em 2.3em;font-size:.92rem}
   .btn-mint:hover{background:#D5EFE5;transform:translateY(-3px);box-shadow:0 18px 34px -16px rgba(0,0,0,.5)}
   .btn-sm{padding:.6em 1.1em;font-size:.74rem;border-radius:10px}
@@ -66,7 +70,7 @@
     position:sticky;top:0;z-index:60;
     background:rgba(254,249,243,.86);
     backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-    border-bottom:1px solid rgba(155,31,75,.09);
+    border-bottom:1px solid rgba(168,17,72,.09);
   }
   .header-inner{display:flex;align-items:center;gap:32px;height:180px}
 
@@ -132,7 +136,7 @@
   .hero-figure figcaption{
     position:absolute;left:34px;bottom:34px;
     background:rgba(254,249,243,.94);backdrop-filter:blur(6px);
-    border-radius:12px;padding:12px 18px;border:1px solid rgba(148,200,178,.7);
+    border-radius:12px;padding:12px 18px;border:1px solid rgba(125,204,178,.7);
   }
   .hero-figure figcaption b{
     display:block;font-family:var(--serif);color:var(--wine);font-size:.95rem;font-weight:600;
@@ -157,13 +161,13 @@
     font-family:var(--serif);font-style:italic;color:#3F6A5A;font-size:clamp(.95rem,1.5vw,1.15rem);
     display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;
   }
-  .band-mint svg{width:20px;height:20px;fill:#6FA790;flex-shrink:0}
+  .band-mint svg{width:20px;height:20px;fill:#5fb798;flex-shrink:0}
 
   /* ---------------- Menu ---------------- */
   .products{padding:96px 0 104px}
   .section-head{text-align:center;max-width:620px;margin:0 auto 56px}
   .section-head .eyebrow{
-    font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:#6FA790;font-weight:600;
+    font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:#fc63a9;font-weight:600;
   }
   .section-head h2{font-size:clamp(2rem,3.4vw,2.9rem);margin:16px 0 14px}
   .section-head p{color:var(--muted);font-weight:300;font-size:.95rem}
@@ -171,7 +175,7 @@
   .menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:1020px;margin-inline:auto}
   .menu-card{
     background:var(--card);border-radius:16px;padding:30px;
-    border:1px solid rgba(148,200,178,.35);
+    border:1px solid rgba(125,204,178,.35);
     transition:.4s cubic-bezier(.4,0,.2,1);
   }
   .menu-card:hover{transform:translateY(-6px);box-shadow:0 24px 46px -28px rgba(74,44,42,.45);border-color:var(--mint)}
@@ -184,7 +188,7 @@
     padding:5px 13px;font-size:.73rem;color:#40685A;font-weight:400;
   }
   .prices{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;border-top:1px dashed rgba(74,44,42,.18);padding-top:20px}
-  .price-cell{background:#FFFDF8;border:1px solid rgba(148,200,178,.5);border-radius:12px;padding:12px 6px;text-align:center;transition:.3s}
+  .price-cell{background:#FFFDF8;border:1px solid rgba(125,204,178,.5);border-radius:12px;padding:12px 6px;text-align:center;transition:.3s}
   .menu-card:hover .price-cell{border-color:var(--mint)}
   .price-cell b{display:block;font-family:var(--serif);font-size:1.1rem;color:var(--wine);font-weight:600}
   .price-cell span{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
@@ -193,10 +197,10 @@
   .postres{margin-top:18px;display:flex;flex-direction:column;gap:10px}
   .postre-row{
     display:flex;align-items:baseline;justify-content:space-between;gap:14px;
-    background:#FFFDF8;border:1px solid rgba(148,200,178,.5);border-radius:12px;padding:11px 16px;
+    background:#FFFDF8;border:1px solid rgba(125,204,178,.5);border-radius:12px;padding:11px 16px;
   }
   .postre-row b{font-family:var(--serif);color:var(--wine);font-weight:600;font-size:.98rem}
-  .postre-row .dots{flex:1;border-bottom:1px dotted rgba(148,200,178,.8);transform:translateY(-4px)}
+  .postre-row .dots{flex:1;border-bottom:1px dotted rgba(125,204,178,.8);transform:translateY(-4px)}
   .postre-row .px{font-family:var(--serif);color:var(--wine);font-weight:600;font-size:1rem}
   .gourmet{border-collapse:separate;border-spacing:8px;width:100%;margin-top:18px}
   .gourmet th{
@@ -204,7 +208,7 @@
     font-weight:600;background:#FFFDF8;border:1px solid var(--mint);border-radius:12px;padding:12px 10px;
   }
   .gourmet td{
-    text-align:center;background:#FFFDF8;border:1px solid rgba(148,200,178,.5);
+    text-align:center;background:#FFFDF8;border:1px solid rgba(125,204,178,.5);
     border-radius:12px;padding:11px 10px;font-size:.92rem;color:var(--body);
   }
   .gourmet td:first-child{font-family:var(--serif);color:var(--wine);font-weight:600}
@@ -220,10 +224,10 @@
   }
   .cat-head .title{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
   .cat-head h3{font-size:1.5rem;display:flex;align-items:center;gap:9px}
-  .cat-head .heart{color:var(--wine)}
+  .cat-head .heart{color:var(--pink)}
   .cat-head .prices-tag{
     font-family:var(--sans);font-size:.7rem;letter-spacing:.07em;text-transform:uppercase;
-    color:var(--muted);background:var(--mint-soft);border-radius:999px;padding:.4em 1em;font-weight:600;
+    color:var(--wine);background:var(--yellow);border-radius:999px;padding:.4em 1em;font-weight:600;
   }
   .cat-arrows{display:flex;gap:10px}
   .arrow{
@@ -235,18 +239,18 @@
   .strip-wrap{
     overflow-x:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;
     padding:6px 26px 24px;scroll-snap-type:x proximity;scrollbar-width:thin;
-    scrollbar-color:var(--mint) rgba(148,200,178,.18);
+    scrollbar-color:var(--mint) rgba(125,204,178,.18);
   }
   .strip-wrap::-webkit-scrollbar{height:9px}
-  .strip-wrap::-webkit-scrollbar-track{background:rgba(148,200,178,.18);border-radius:99px}
+  .strip-wrap::-webkit-scrollbar-track{background:rgba(125,204,178,.18);border-radius:99px}
   .strip-wrap::-webkit-scrollbar-thumb{background:var(--mint);border-radius:99px}
   .strip{display:flex;gap:22px;scroll-snap-type:x proximity}
   .cat-block.is-fit .strip{justify-content:center}
   .slide{
     flex:0 0 min(300px,74vw);scroll-snap-align:start;border-radius:18px;overflow:hidden;
-    border:1px solid rgba(148,200,178,.6);background:#FFFDF8;transition:.35s cubic-bezier(.4,0,.2,1);
+    border:1px solid rgba(125,204,178,.6);background:#FFFDF8;transition:.35s cubic-bezier(.4,0,.2,1);
   }
-  .slide:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:#7FB79C}
+  .slide:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:#64b99b}
   .slide img{width:100%;height:auto;display:block}
   .slide .tile{
     aspect-ratio:1/1;display:grid;place-items:center;
@@ -263,7 +267,7 @@
   .specials{padding:40px 0 20px}
   .special-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
   .special-card{
-    background:var(--card);border:1px solid rgba(148,200,178,.35);border-radius:16px;
+    background:var(--card);border:1px solid rgba(125,204,178,.35);border-radius:16px;
     padding:28px 24px;display:flex;flex-direction:column;
     transition:.4s cubic-bezier(.4,0,.2,1);
   }
@@ -287,10 +291,10 @@
   .bases{padding:30px 0 20px}
   .bases-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:24px}
   .base-card{
-    margin:0;background:#FFFDF8;border:1px solid rgba(148,200,178,.6);
+    margin:0;background:#FFFDF8;border:1px solid rgba(125,204,178,.6);
     border-radius:18px;overflow:hidden;transition:.35s cubic-bezier(.4,0,.2,1);
   }
-  .base-card:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:#7FB79C}
+  .base-card:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:#64b99b}
   .base-card img{width:100%;height:auto;display:block}
   .base-card figcaption{background:var(--card);padding:12px 16px}
   .base-card figcaption b{font-family:var(--serif);font-size:1rem;color:var(--wine);font-weight:600}
@@ -306,22 +310,22 @@
     display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--mint-soft);
     color:var(--wine);font-family:var(--serif);font-weight:600;font-size:.85rem;flex-shrink:0;
   }
-  .form-card{background:var(--card);border:1px solid rgba(148,200,178,.4);border-radius:18px;padding:30px;box-shadow:var(--shadow)}
+  .form-card{background:var(--card);border:1px solid rgba(125,204,178,.4);border-radius:18px;padding:30px;box-shadow:var(--shadow)}
   .field{margin-bottom:22px}
   .field > label{display:block;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:#7A6A62;font-weight:600;margin-bottom:9px}
   .field select,.field input[type=text],.field input[type=tel],.field input[type=date],.field input[type=time],.field textarea{
-    width:100%;background:#FFFDF8;border:1.5px solid rgba(148,200,178,.55);border-radius:12px;
+    width:100%;background:#FFFDF8;border:1.5px solid rgba(125,204,178,.55);border-radius:12px;
     padding:13px 15px;font-family:var(--sans);font-size:.9rem;color:var(--body);transition:.25s;
     -webkit-appearance:none;appearance:none;
   }
-  .field select:focus,.field input:focus,.field textarea:focus{outline:none;border-color:var(--wine);box-shadow:0 0 0 3px rgba(155,31,75,.08)}
+  .field select:focus,.field input:focus,.field textarea:focus{outline:none;border-color:var(--wine);box-shadow:0 0 0 3px rgba(168,17,72,.08)}
   .field textarea{resize:vertical;min-height:96px;line-height:1.6}
   .row2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
   .opts{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
   .opt{position:relative;cursor:pointer}
   .opt input{position:absolute;opacity:0;pointer-events:none}
   .opt span{
-    display:block;padding:12px 14px;background:#FFFDF8;border:1.5px solid rgba(148,200,178,.55);
+    display:block;padding:12px 14px;background:#FFFDF8;border:1.5px solid rgba(125,204,178,.55);
     border-radius:12px;cursor:pointer;transition:.25s;font-size:.86rem;color:var(--body);
   }
   .opt span small{display:block;font-size:.66rem;color:var(--muted);margin-top:3px;font-weight:400}
@@ -337,7 +341,7 @@
   .price-num small{font-size:.68rem;color:#40685A;text-decoration:line-through;font-weight:400;font-family:var(--sans)}
   .review-opt span{display:block;width:100%}
   .review-link{display:inline-block;margin-top:10px;font-size:.78rem;font-weight:600;color:var(--wine);text-decoration:underline;text-underline-offset:3px}
-  .review-link:hover{color:#7E1739}
+  .review-link:hover{color:#8a0e3b}
   .btn-wa{
     width:100%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;gap:10px;
     border:none;padding:16px;border-radius:14px;font-family:var(--sans);font-weight:600;font-size:1rem;cursor:pointer;transition:.3s;
@@ -353,7 +357,7 @@
   .visit{background:var(--wine);color:#FDEDE6;padding:80px 0;position:relative;overflow:hidden}
   .visit::before{
     content:"";position:absolute;inset:0;
-    background:radial-gradient(700px 340px at 88% 15%,rgba(148,200,178,.16),transparent 70%);
+    background:radial-gradient(700px 340px at 88% 15%,rgba(125,204,178,.16),transparent 70%);
   }
   .visit-inner{position:relative;display:flex;align-items:center;gap:56px;flex-wrap:wrap}
   .seal-since{width:132px;height:132px;flex-shrink:0}
@@ -380,7 +384,7 @@
   .footer-side{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
   .social{
     display:inline-flex;align-items:center;gap:9px;font-size:.82rem;font-weight:500;
-    color:var(--muted);padding:9px 16px;border:1px solid rgba(148,200,178,.55);
+    color:var(--muted);padding:9px 16px;border:1px solid rgba(125,204,178,.55);
     border-radius:999px;background:#FFFDF8;transition:.3s;
   }
   .social:hover{color:var(--wine);border-color:var(--mint);transform:translateY(-2px)}
@@ -393,7 +397,7 @@
   .branch-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
   .branch-card{
     background:var(--card);border-radius:16px;padding:26px 24px;
-    border:1px solid rgba(148,200,178,.35);transition:.4s cubic-bezier(.4,0,.2,1);
+    border:1px solid rgba(125,204,178,.35);transition:.4s cubic-bezier(.4,0,.2,1);
   }
   .branch-card:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:var(--mint)}
   .branch-card .pin{
@@ -406,7 +410,7 @@
   .branch-map{
     display:inline-flex;align-items:center;gap:7px;margin-top:16px;
     font-size:.76rem;font-weight:600;letter-spacing:.04em;color:var(--wine);
-    background:#FFFDF8;border:1px solid rgba(148,200,178,.6);border-radius:999px;padding:8px 15px;transition:.3s;
+    background:#FFFDF8;border:1px solid rgba(125,204,178,.6);border-radius:999px;padding:8px 15px;transition:.3s;
   }
   .branch-map svg{width:14px;height:14px;flex-shrink:0}
   .branch-map:hover{background:var(--mint-soft);border-color:var(--mint);transform:translateY(-2px)}
@@ -417,7 +421,7 @@
   .social-row{display:flex;gap:12px;margin-bottom:8px}
   .social-ic{
     width:44px;height:44px;border-radius:50%;display:grid;place-items:center;
-    background:#FFFDF8;border:1px solid rgba(148,200,178,.6);
+    background:#FFFDF8;border:1px solid rgba(125,204,178,.6);
     transition:.3s cubic-bezier(.4,0,.2,1);
   }
   .social-ic:hover{background:var(--mint-soft);border-color:var(--mint);transform:translateY(-3px)}
@@ -451,7 +455,7 @@
     .nav{
       position:fixed;inset:180px 0 auto 0;background:var(--cream);
       flex-direction:column;gap:0;padding:8px 24px 22px;margin:0;
-      border-bottom:1px solid rgba(155,31,75,.12);
+      border-bottom:1px solid rgba(168,17,72,.12);
       transform:translateY(-140%);transition:transform .4s cubic-bezier(.4,0,.2,1);
       box-shadow:0 24px 40px -30px rgba(74,44,42,.6);
       max-height:calc(100vh - 180px);overflow-y:auto;
@@ -575,7 +579,7 @@
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-copy reveal">
-        <span class="pill">Hecho a mano a diario</span>
+        <span class="pill">Siempre hay un huequito para lo dulce</span>
         <h1>Te mereces algo <em>Dolce</em></h1>
         <p class="lead">
           Una pequeña panadería donde cada pastel comienza al amanecer — mantequilla real, fruta
@@ -605,14 +609,19 @@
   <!-- ============ TRUST BAR ============ -->
   <section class="trust" id="about">
     <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Nosotros</span>
+        <h2>Siempre hay un huequito para lo dulce</h2>
+        <p>Somos una pasteler&iacute;a local que celebra la frescura y la dulzura: pasteles y postres de alta calidad, sin conservadores a&ntilde;adidos, elaborados cada d&iacute;a por personas reales.</p>
+      </div>
       <div class="trust-grid">
         <div class="trust-item reveal">
           <div class="trust-icon">
             <svg viewBox="0 0 24 24"><path d="M12 3v2M12 19v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M3 12h2M19 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/><circle cx="12" cy="12" r="4"/></svg>
           </div>
           <div>
-            <h4>Fresco a diario</h4>
-            <p>Horneado cada mañana, nunca después del anochecer.</p>
+            <h4>Fresco de verdad</h4>
+            <p>Sin conservadores a&ntilde;adidos, horneado cada ma&ntilde;ana.</p>
           </div>
         </div>
         <div class="trust-item reveal">
@@ -620,8 +629,8 @@
             <svg viewBox="0 0 24 24"><path d="M9 3h6l1 4a4 4 0 0 1-8 0Z"/><path d="M12 11v7"/><path d="M8.5 21h7"/><path d="M10 18h4"/></svg>
           </div>
           <div>
-            <h4>Hecho artesanal</h4>
-            <p>Lotes pequeños, mezclados y acabados a mano.</p>
+            <h4>Hecho con amor</h4>
+            <p>Cada detalle pensado para consentir, compartir y estar presente.</p>
           </div>
         </div>
         <div class="trust-item reveal">
