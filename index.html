@@ -7,7 +7,7 @@
 <meta name="description" content="Pasteler&iacute;a local en Puebla: pasteles y postres frescos, sin conservadores a&ntilde;adidos, elaborados cada d&iacute;a por personas reales. Siempre hay un huequito para lo dulce.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&family=Parisienne&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Parisienne&display=swap" rel="stylesheet">
 <style>
   :root{
     --cream:#f4f1e9;
@@ -25,7 +25,7 @@
     --line:rgba(74,44,42,.12);
     --r:14px;
     --serif:'Fredoka','Baloo 2',Georgia,serif;
-    --sans:'Poppins',-apple-system,'SF Pro Text','Segoe UI',system-ui,sans-serif;
+    --sans:'Inter',-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',Roboto,sans-serif;
     --script:'Parisienne',cursive;
     --shadow:0 18px 44px -22px rgba(74,44,42,.38);
   }
@@ -104,7 +104,15 @@
   .menu-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
   /* ---------------- Hero ---------------- */
-  .hero{padding:84px 0 76px}
+  .hero{
+    padding:84px 0 76px;position:relative;
+    background:url('img/hero-fondo.png') center/cover no-repeat;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(90deg,rgba(244,241,233,.95) 0%,rgba(244,241,233,.82) 44%,rgba(244,241,233,.35) 100%);
+  }
+  .hero .container{position:relative;z-index:1}
   .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
 
   .pill{
@@ -169,6 +177,7 @@
   .section-head .eyebrow{
     font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:#fc63a9;font-weight:600;
   }
+  .section-head .firma{display:block;font-family:var(--script);font-size:1.9rem;color:var(--pink);line-height:1;margin-bottom:-2px}
   .section-head h2{font-size:clamp(2rem,3.4vw,2.9rem);margin:16px 0 14px}
   .section-head p{color:var(--muted);font-weight:300;font-size:.95rem}
 
@@ -492,6 +501,7 @@
     .header-ctas .btn-outline{display:none}
     .header-ctas .btn{padding:.62em .95em;font-size:.74rem;border-radius:10px}
     .hero{padding:44px 0 34px}
+    .hero::before{background:linear-gradient(180deg,rgba(244,241,233,.9) 0%,rgba(244,241,233,.68) 100%)}
     .hero h1{font-size:clamp(2.1rem,9.5vw,2.7rem)}
     .hero p.lead{font-size:.92rem}
     .hero-ctas{gap:12px;margin-top:28px}
@@ -582,9 +592,9 @@
         <span class="pill">Siempre hay un huequito para lo dulce</span>
         <h1>Te mereces algo <em>Dolce</em></h1>
         <p class="lead">
-          Una pequeña panadería donde cada pastel comienza al amanecer — mantequilla real, fruta
-          de temporada y la paciencia obstinada de hacer las cosas despacio. Frambuesa, pistache,
-          menta fresca y ralladura de limón, mezclados a mano y acabados con luz de ventana.
+          Dolce Meza es ese lugar dulce que acompa&ntilde;a los momentos que importan. Una pasteler&iacute;a
+          hecha con amor, donde cada pastel y postre nace del deseo de consentir, compartir y estar
+          presente. Porque lo dulce no solo se come: se siente.
         </p>
         <div class="hero-ctas">
           <a href="#galeria" class="btn btn-primary">Ver pasteles</a>
@@ -610,9 +620,9 @@
   <section class="trust" id="about">
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow">Nosotros</span>
+        <span class="eyebrow">Nuestro concepto</span>
         <h2>Siempre hay un huequito para lo dulce</h2>
-        <p>Somos una pasteler&iacute;a local que celebra la frescura y la dulzura: pasteles y postres de alta calidad, sin conservadores a&ntilde;adidos, elaborados cada d&iacute;a por personas reales.</p>
+        <p>Todos tenemos d&iacute;as llenos. Llenos de pendientes, de trabajo, de compromisos. Comemos apurados, dormimos menos, nos exigimos m&aacute;s. Y aun as&iacute;, siempre, siempre hay un &ldquo;huequito&rdquo;. Ese huequito no es en el est&oacute;mago. Es en el alma. Un espacio reservado para algo que nos consienta, nos recuerde que estamos vivos, que a&uacute;n hay cosas peque&ntilde;as que nos pueden hacer sentir bien. Un pastel, una mordida dulce, una conversaci&oacute;n sincera&hellip; para eso hay espacio siempre. En Dolce Meza creemos en esos &ldquo;huequitos&rdquo;. Los hacemos m&aacute;s grandes, m&aacute;s sabrosos, m&aacute;s compartidos. Porque lo dulce no est&aacute; de m&aacute;s: acompa&ntilde;a, sostiene, cuida.</p>
       </div>
       <div class="trust-grid">
         <div class="trust-item reveal">
@@ -841,6 +851,7 @@
   <section class="pedido" id="pedido">
     <div class="container">
       <div class="section-head reveal">
+        <span class="firma">Ord&eacute;nalo</span>
         <span class="eyebrow">Pedido por WhatsApp</span>
         <h2>Ordena ahora</h2>
         <p>Arma tu pastel, elige d&oacute;nde y cu&aacute;ndo lo recoges. Tu pedido llega listo a nuestro WhatsApp.</p>
