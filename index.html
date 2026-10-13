@@ -230,6 +230,15 @@
   /* ---------------- Tira de sabores ---------------- */
   .carousel{padding:0 0 40px}
   .cat-block{margin:30px 0 10px}
+  .cat-fill{position:relative}
+  .cat-fill .fill-deco{
+    position:absolute;top:54%;width:150px;height:auto;z-index:2;pointer-events:none;
+    opacity:.95;filter:drop-shadow(0 10px 20px rgba(74,44,42,.12));
+  }
+  .cat-fill .fill-deco.l{left:1.5%;transform:translateY(-50%) rotate(-8deg)}
+  .cat-fill .fill-deco.r{right:1.5%;transform:translateY(-50%) rotate(8deg)}
+  @media (max-width:900px){.cat-fill .fill-deco{width:118px}}
+  @media (max-width:680px){.cat-fill .fill-deco{width:64px;top:56%;opacity:.9}}
   .cat-head{
     display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;
     margin-bottom:14px;
@@ -495,6 +504,8 @@
     .deco{animation:floaty 9s ease-in-out infinite}
     .deco:nth-of-type(odd){animation-delay:-3s}
     .deco:nth-of-type(even){animation-delay:-6s}
+    .cat-fill .fill-deco{animation:floaty 8s ease-in-out infinite}
+    .cat-fill .fill-deco.r{animation-delay:-4s}
   }
   @media (prefers-reduced-motion: reduce){
     .hero-copy .pill,.hero-copy h1,.hero-copy .lead,.hero-copy .hero-ctas,.hero-figure,.hero-logo-mobile{animation:none}
@@ -820,7 +831,9 @@
     </div>
 
     <!-- De Frutas -->
-    <div class="cat-block">
+    <div class="cat-block cat-fill">
+      <img class="fill-deco l" src="img/deco/deco-4.png" alt="" aria-hidden="true">
+      <img class="fill-deco r" src="img/deco/deco-6.png" alt="" aria-hidden="true">
       <div class="container cat-head">
         <div class="title"><h3><span class="heart">&hearts;</span> De Frutas</h3><span class="prices-tag">Desde $85</span></div>
         <div class="cat-arrows">
@@ -1049,6 +1062,7 @@
             </div>
           </div>
 
+          <p class="form-note">Los pedidos se agendan con m&iacute;nimo 24 horas de anticipaci&oacute;n.</p>
           <p class="form-note" id="anticipacionNote" style="display:none">&iexcl;Ojo! Cheese Cake y Choco Flan se preparan con 2 d&iacute;as de anticipaci&oacute;n.</p>
 
           <div class="field">
@@ -1346,6 +1360,7 @@
   const precioAntes = document.getElementById('precioAntes');
   const anticipacionNote = document.getElementById('anticipacionNote');
   const ERR_DEFAULT = errEl.textContent;
+  const ymd = d => { const z = n => String(n).padStart(2, '0'); return d.getFullYear() + '-' + z(d.getMonth() + 1) + '-' + z(d.getDate()); };
 
   const fillSabores = () => {
     const list = CAT_SABORES[catSel.value] || [];
@@ -1380,8 +1395,8 @@
     const anticipado = ANTICIPADOS.includes(sabor);
     anticipacionNote.style.display = anticipado ? 'block' : 'none';
     const d = new Date();
-    if (anticipado) d.setDate(d.getDate() + 2);
-    fechaInput.min = d.toISOString().split('T')[0];
+    d.setDate(d.getDate() + (anticipado ? 2 : 1));
+    fechaInput.min = ymd(d);
     let p = null;
     if (esPostre) p = POSTRES[sabor];
     else if (catSel.value === 'Gourmet') p = tam && GOURMET[sabor] ? GOURMET[sabor][tam] : null;
@@ -1392,7 +1407,7 @@
   catSel.addEventListener('change', fillSabores);
   sabSel.addEventListener('change', updatePrecio);
   document.querySelectorAll('input[name=tamano]').forEach(r => r.addEventListener('change', updatePrecio));
-  fechaInput.min = new Date().toISOString().split('T')[0];
+  { const d0 = new Date(); d0.setDate(d0.getDate() + 1); fechaInput.min = ymd(d0); }
   reviewChk.addEventListener('change', updatePrecio);
 
   document.getElementById('orderForm').addEventListener('submit', function (e) {
@@ -1416,8 +1431,10 @@
       errEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
-    if (ANTICIPADOS.includes(sabor) && fecha < fechaInput.min) {
-      errEl.textContent = 'Cheese Cake y Choco Flan requieren 2 d\u00edas de anticipaci\u00f3n: elige otra fecha de recogida.';
+    if (fecha < fechaInput.min) {
+      errEl.textContent = ANTICIPADOS.includes(sabor)
+        ? 'Cheese Cake y Choco Flan requieren 2 d\u00edas de anticipaci\u00f3n: elige otra fecha de recogida.'
+        : 'Los pedidos requieren m\u00ednimo 24 horas de anticipaci\u00f3n: elige otra fecha de recogida.';
       errEl.classList.add('show');
       errEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
