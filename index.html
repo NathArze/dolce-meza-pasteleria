@@ -453,11 +453,24 @@
   .wa-float svg{width:30px;height:30px;fill:#fff}
   .wa-float::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #25D366;animation:waPulse 2.2s ease-out infinite}
   @keyframes waPulse{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.75);opacity:0}}
-  .footer-tagline{font-family:var(--script);font-size:1.25rem;color:var(--wine);line-height:1}
 
   /* ---------------- Reveal ---------------- */
   .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.4,0,.2,1)}
   .reveal.in{opacity:1;transform:none}
+
+  /* ---------------- Decoraciones de fondo ---------------- */
+  .has-deco{position:relative;overflow:hidden}
+  .has-deco > *:not(.deco){position:relative;z-index:1}
+  .deco{
+    position:absolute;z-index:0;pointer-events:none;opacity:.16;
+    background-repeat:no-repeat;background-position:center;background-size:contain;
+  }
+  .deco-1{top:-24px;right:-28px;width:220px;height:300px;background-image:url('img/deco/deco-1.png')}
+  .deco-2{bottom:-32px;left:-30px;width:240px;height:240px;background-image:url('img/deco/deco-2.png')}
+  .deco-3{top:-20px;left:-34px;width:200px;height:260px;background-image:url('img/deco/deco-3.png')}
+  .deco-4{bottom:-28px;right:-34px;width:210px;height:260px;background-image:url('img/deco/deco-4.png')}
+  .deco-5{top:-24px;left:-30px;width:210px;height:260px;background-image:url('img/deco/deco-5.png')}
+  .deco-6{top:-28px;right:-34px;width:220px;height:250px;background-image:url('img/deco/deco-6.png')}
 
   /* ---------------- Responsive ---------------- */
   @media (max-width:1040px){
@@ -492,6 +505,7 @@
   }
   @media (max-width:680px){
     .container{width:calc(100% - 32px)}
+    .deco{opacity:.1;transform:scale(.75)}
     .brand .seal{height:88px}
     .header-inner{height:104px}
     .nav{inset:104px 0 auto 0}
@@ -549,7 +563,6 @@
     .nav{inset:96px 0 auto 0}
     .special-icon{width:48px;height:48px;font-size:1.4rem}
     .base-card figcaption b{font-size:.92rem}
-    .footer-tagline{font-size:1.1rem}
   }
 </style>
 </head>
@@ -665,7 +678,9 @@
   </div>
 
     <!-- ============ TIRAS DE SABORES ============ -->
-  <section class="carousel" id="galeria">
+  <section class="carousel has-deco" id="galeria">
+    <span class="deco deco-1" aria-hidden="true"></span>
+    <span class="deco deco-2" aria-hidden="true"></span>
     <div class="container">
       <div class="section-head reveal" id="shop">
         <span class="eyebrow">Tienda de sabores</span>
@@ -786,7 +801,8 @@
   </section>
 
     <!-- ============ PEDIDOS ESPECIALES ============ -->
-  <section class="specials" id="especiales">
+  <section class="specials has-deco" id="especiales">
+    <span class="deco deco-3" aria-hidden="true"></span>
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Hecho para tu evento</span>
@@ -826,7 +842,8 @@
   </section>
 
     <!-- ============ NUESTRAS BASES ============ -->
-  <section class="bases" id="bases">
+  <section class="bases has-deco" id="bases">
+    <span class="deco deco-4" aria-hidden="true"></span>
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Sobre cu&aacute;l pastel</span>
@@ -848,7 +865,8 @@
   </section>
 
     <!-- ============ PEDIDO ============ -->
-  <section class="pedido" id="pedido">
+  <section class="pedido has-deco" id="pedido">
+    <span class="deco deco-5" aria-hidden="true"></span>
     <div class="container">
       <div class="section-head reveal">
         <span class="firma">Ord&eacute;nalo</span>
@@ -942,9 +960,7 @@
           <div class="field">
             <label>M&eacute;todo de pago</label>
             <div class="opts">
-              <label class="opt"><input type="radio" name="pago" value="Efectivo"><span>Efectivo<small>Al recoger</small></span></label>
-              <label class="opt"><input type="radio" name="pago" value="Transferencia"><span>Transferencia<small>Te enviamos los datos</small></span></label>
-              <label class="opt"><input type="radio" name="pago" value="Tarjeta"><span>Tarjeta<small>Al recoger</small></span></label>
+              <label class="opt"><input type="radio" name="pago" value="Transferencia" checked><span>Transferencia<small>Te enviamos los datos por WhatsApp</small></span></label>
             </div>
           </div>
 
@@ -979,7 +995,8 @@
   </section>
 
 <!-- ============ SUCURSALES ============ -->
-  <section class="branches" id="sucursales">
+  <section class="branches has-deco" id="sucursales">
+    <span class="deco deco-6" aria-hidden="true"></span>
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Vis&iacute;tanos</span>
@@ -1074,7 +1091,6 @@
         </a>
       </div>
       <p class="footer-handle">@dolce.meza &middot; /DolceMeza.pasteleria &middot; @dolcemeza</p>
-      <p class="footer-tagline">Hecho con amor en Puebla &hearts;</p>
       <p class="footer-copy">&copy; 2026 Dolce Meza Pasteler&iacute;a</p>
     </div>
   </div>
