@@ -239,6 +239,17 @@
   .cat-fill .fill-deco.r{right:1.5%;transform:translateY(-50%) rotate(8deg)}
   @media (max-width:900px){.cat-fill .fill-deco{width:118px}}
   @media (max-width:680px){.cat-fill .fill-deco{width:64px;top:56%;opacity:.9}}
+  .cat-fill-gourmet .fill-deco{width:120px}
+  .cat-fill-gourmet .fill-deco.l{left:0.5%}
+  .cat-fill-gourmet .fill-deco.r{right:0.5%}
+  @media (max-width:1199px){.cat-fill-gourmet .fill-deco{display:none}}
+  .trust.has-deco .fill-deco{
+    position:absolute;top:50%;width:140px;height:auto;z-index:2;pointer-events:none;
+    opacity:.95;filter:drop-shadow(0 10px 20px rgba(74,44,42,.12));
+  }
+  .trust.has-deco .fill-deco.l{left:2%;transform:translateY(-50%) rotate(-8deg)}
+  .trust.has-deco .fill-deco.r{right:2%;transform:translateY(-50%) rotate(8deg)}
+  @media (max-width:999px){.trust.has-deco .fill-deco{display:none}}
   .cat-head{
     display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;
     margin-bottom:14px;
@@ -506,6 +517,8 @@
     .deco:nth-of-type(even){animation-delay:-6s}
     .cat-fill .fill-deco{animation:floaty 8s ease-in-out infinite}
     .cat-fill .fill-deco.r{animation-delay:-4s}
+    .trust.has-deco .fill-deco{animation:floaty 9s ease-in-out infinite}
+    .trust.has-deco .fill-deco.r{animation-delay:-4.5s}
   }
   @media (prefers-reduced-motion: reduce){
     .hero-copy .pill,.hero-copy h1,.hero-copy .lead,.hero-copy .hero-ctas,.hero-figure,.hero-logo-mobile{animation:none}
@@ -739,6 +752,8 @@
     <span class="deco deco-9" aria-hidden="true"></span>
     <span class="deco deco-32" aria-hidden="true"></span>
     <span class="deco deco-33" aria-hidden="true"></span>
+    <img class="fill-deco l" src="img/deco/deco-1.png" alt="" aria-hidden="true">
+    <img class="fill-deco r" src="img/deco/deco-2.png" alt="" aria-hidden="true">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Nuestro concepto</span>
@@ -874,7 +889,9 @@
     </div>
 
     <!-- Gourmet -->
-    <div class="cat-block">
+    <div class="cat-block cat-fill cat-fill-gourmet">
+      <img class="fill-deco l" src="img/deco/deco-3.png" alt="" aria-hidden="true">
+      <img class="fill-deco r" src="img/deco/deco-5.png" alt="" aria-hidden="true">
       <div class="container cat-head">
         <div class="title"><h3><span class="heart">&hearts;</span> Gourmet</h3><span class="prices-tag">Desde $100</span></div>
         <div class="cat-arrows">
