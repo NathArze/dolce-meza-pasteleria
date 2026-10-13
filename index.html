@@ -142,7 +142,8 @@
     background:#EFE6DA;overflow:hidden;
     clip-path:polygon(38px 0,100% 0,100% calc(100% - 38px),calc(100% - 38px) 100%,0 100%,0 38px);
   }
-  .hero-figure img,.hero-figure svg{width:100%;height:auto;object-fit:cover}
+  .hero-figure img,.hero-figure svg{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+  .hero-logo-mobile{display:none}
   .hero-figure figcaption{
     position:absolute;left:34px;bottom:34px;
     background:rgba(254,249,243,.94);backdrop-filter:blur(6px);
@@ -262,7 +263,7 @@
     border:1px solid rgba(125,204,178,.6);background:#FFFDF8;transition:.35s cubic-bezier(.4,0,.2,1);
   }
   .slide:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:#64b99b}
-  .slide img{width:100%;height:auto;display:block}
+  .slide img{width:100%;height:auto;display:block;aspect-ratio:4/5;object-fit:cover}
   .slide .tile{
     aspect-ratio:1/1;display:grid;place-items:center;
     background:linear-gradient(160deg,#F3EADD,#EAD8BE);
@@ -534,6 +535,7 @@
     .hero{padding:52px 0 40px}
     .hero-grid{grid-template-columns:1fr;gap:40px}
     .hero-figure{order:-1}
+    .hero-logo-mobile{display:block;width:140px;margin:0 auto 4px;order:-2}
     .trust-grid{gap:20px}
     .visit-inner{gap:34px}
     .pedido-wrap{grid-template-columns:1fr}
@@ -569,7 +571,11 @@
     .cat-head h3{font-size:1.28rem}
     .cat-head .prices-tag{font-size:.64rem}
     .strip-wrap{padding:4px 18px 20px}
-    .slide{flex:0 0 72vw}
+    .slide{flex:0 0 64vw}
+    .hero-figure img{aspect-ratio:1/1}
+    .bases-grid{grid-template-columns:1fr 1fr;gap:14px}
+    .base-card figcaption{padding:10px 12px}
+    .base-card figcaption b{font-size:.82rem}
     .opts{gap:8px}
     .special-grid{grid-template-columns:1fr}
     .special-card{padding:24px 20px}
@@ -649,6 +655,7 @@
     <span class="deco deco-30" aria-hidden="true"></span>
     <span class="deco deco-31" aria-hidden="true"></span>
     <div class="container hero-grid">
+      <img class="hero-logo-mobile" src="logo.png" alt="Dolce Meza">
       <div class="hero-copy reveal">
         <span class="pill">Siempre hay un huequito para lo dulce</span>
         <h1>Te mereces algo <em>Dolce</em></h1>
