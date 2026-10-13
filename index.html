@@ -31,7 +31,7 @@
   }
 
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth;scroll-padding-top:190px}
   body{
     font-family:var(--sans);
     background:var(--cream);
@@ -39,6 +39,8 @@
     font-size:16px;
     line-height:1.7;
     -webkit-font-smoothing:antialiased;
+    -webkit-tap-highlight-color:transparent;
+    text-size-adjust:100%;-webkit-text-size-adjust:100%;
     overflow-x:hidden;
   }
   img,svg{display:block;max-width:100%}
@@ -506,13 +508,14 @@
 
   /* ---------------- Responsive ---------------- */
   @media (max-width:1040px){
+    html{scroll-padding-top:116px}
     .nav{
-      position:fixed;inset:180px 0 auto 0;background:var(--cream);
+      position:fixed;inset:108px 0 auto 0;background:var(--cream);
       flex-direction:column;gap:0;padding:8px 24px 22px;margin:0;
       border-bottom:1px solid rgba(168,17,72,.12);
       transform:translateY(-140%);transition:transform .4s cubic-bezier(.4,0,.2,1);
       box-shadow:0 24px 40px -30px rgba(74,44,42,.6);
-      max-height:calc(100vh - 180px);overflow-y:auto;
+      max-height:calc(100vh - 108px);overflow-y:auto;
     }
     .nav.open{transform:none}
     .nav a{padding:15px 0;border-bottom:1px solid rgba(74,44,42,.07);font-size:.95rem}
@@ -520,12 +523,14 @@
     .menu-toggle{display:block;margin-left:auto;order:3}
     .nav-order{display:block}
     .header-ctas{order:2;margin-left:auto}
-    .header-inner{gap:16px;height:168px}
-    .nav{inset:168px 0 auto 0}
-    .brand .seal{height:152px}
+    .header-inner{gap:16px;height:108px}
+    .brand .seal{height:92px}
   }
   @media (max-width:900px){
-    .brand .seal{height:118px}
+    html{scroll-padding-top:108px}
+    .header-inner{height:100px}
+    .brand .seal{height:84px}
+    .nav{inset:100px 0 auto 0;max-height:calc(100vh - 100px)}
     .hero{padding:52px 0 40px}
     .hero-grid{grid-template-columns:1fr;gap:40px}
     .hero-figure{order:-1}
@@ -537,10 +542,12 @@
   }
   @media (max-width:680px){
     .container{width:calc(100% - 32px)}
-    .deco{opacity:.1;transform:scale(.75)}
-    .brand .seal{height:88px}
-    .header-inner{height:104px}
-    .nav{inset:104px 0 auto 0}
+    html{scroll-padding-top:84px}
+    .deco{display:none}
+    .deco-1,.deco-2,.deco-3,.deco-4,.deco-5,.deco-6{display:block;opacity:.1;transform:scale(.7)}
+    .brand .seal{height:62px}
+    .header-inner{height:76px}
+    .nav{inset:76px 0 auto 0;max-height:calc(100vh - 76px)}
     .brand-name{font-size:1.3rem}
     .brand-tag{font-size:.5rem;letter-spacing:.2em}
     .header-ctas{gap:8px}
@@ -587,12 +594,17 @@
     .footer-inner{flex-direction:column;align-items:flex-start;gap:22px}
     .footer-nav{flex-wrap:wrap;gap:14px 22px}
     .footer-side{align-items:flex-start}
+    .nav a{padding:16px 2px}
+    .menu-toggle{padding:10px}
+    .opt span{padding:11px 12px}
+    .section-head{margin-bottom:34px}
   }
   @media (max-width:400px){
     .container{width:calc(100% - 26px)}
-    .brand .seal{height:76px}
-    .header-inner{height:96px}
-    .nav{inset:96px 0 auto 0}
+    html{scroll-padding-top:76px}
+    .brand .seal{height:54px}
+    .header-inner{height:68px}
+    .nav{inset:68px 0 auto 0;max-height:calc(100vh - 68px)}
     .special-icon{width:48px;height:48px;font-size:1.4rem}
     .base-card figcaption b{font-size:.92rem}
   }
